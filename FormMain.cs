@@ -181,7 +181,16 @@ namespace HazeronProspector
             }
             else if (rabFilterWormhole.Checked && nudFilterWormhole.Value > 0) // Wormhole filter
             {
-                if (selectedSystems.Count != 0)
+                if (selectedSystems.Count == 0)
+                {
+                    MessageBox.Show(this, "The entered coordinate did not yield a system." + Environment.NewLine + "If no system is at or very close to the coordinate, then it is impossible to filter with wormhole jumps.", "No System at Coordinate", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else if (rabSelectionDropdown.Checked && cobSelectionSector.SelectedIndex == 0)
+                {
+                    // If all sectors are selected, don't bother with this.
+                }
+                else
                 {
                     for (int i = 0; i < nudFilterWormhole.Value; i++)
                     {
@@ -195,11 +204,6 @@ namespace HazeronProspector
                             }
                         }
                     }
-                }
-                else
-                {
-                    MessageBox.Show(this, "The entered coordinate did not yield a system." + Environment.NewLine + "If no system is at or very close to the coordinate, then it is impossible to filter with wormhole jumps.", "No System at Coordinate", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
                 }
             }
 
