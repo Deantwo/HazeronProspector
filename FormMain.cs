@@ -403,9 +403,10 @@ namespace HazeronProspector
         private void dgv_SortCompare(object sender, DataGridViewSortCompareEventArgs e)
         { // Override of the DataGridView's normal SortCompare. This version converts some of the fields to numbers before sorting them.
             DataGridView dgv = (sender as DataGridView);
-
             string columnName = e.Column.Name;
-            if (columnName.Remove("dgvSurveyColumnResource".Length) == "dgvSurveyColumnResource")
+
+            const int ColumnResourceNameLenght = 23; // "dgvSurveyColumnResource".Length
+            if (columnName.Length > ColumnResourceNameLenght && columnName.Remove(ColumnResourceNameLenght) == "dgvSurveyColumnResource")
             {
                 int value1 = 0;
                 if ((e.CellValue1 as Resource) != null)
@@ -414,12 +415,6 @@ namespace HazeronProspector
                 if ((e.CellValue2 as Resource) != null)
                     value2 = (e.CellValue2 as Resource).Quality;
                 e.SortResult = CompareNumbers(value1, value2);
-            }
-            else if (columnName == "dgvSurveyColumnCityLoyalty")
-            {
-                //double value1 = Math.Round(((double)hCityList[listIndex1].Loyalty / hCityList[listIndex1].Population) * 100, 2);
-                //double value2 = Math.Round(((double)hCityList[listIndex2].Loyalty / hCityList[listIndex2].Population) * 100, 2);
-                //e.SortResult = CompareNumbers(value1, value2);
             }
             else
             {
