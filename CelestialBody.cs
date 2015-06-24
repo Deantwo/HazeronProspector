@@ -181,7 +181,7 @@ namespace HazeronProspector
                 _populationLimit = 1000;
             else if (_type == CelestialBodyType.Planet || _type == CelestialBodyType.Moon || _type == CelestialBodyType.LargeMoon)
             {
-                _populationLimit = Convert.ToInt32(size.Remove(size.IndexOf(' ') - 1).Replace(".", "").Replace(",", ""));
+                _populationLimit = Convert.ToInt32(size.Remove(size.LastIndexOf(' ') - 1));
                 _populationLimit = Convert.ToInt32(100 * Math.Floor((float)_populationLimit / 1800));
             }
         }
