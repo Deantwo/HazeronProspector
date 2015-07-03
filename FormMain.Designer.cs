@@ -36,6 +36,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1FileExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1Options = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1OptionsSystemWide = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1Help = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1HelpGithub = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1HelpThread = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,6 +53,13 @@
             this.rabSelectionCoordinate = new System.Windows.Forms.RadioButton();
             this.tbxSelectionCoordinate = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.cbxOptionsSystemWide = new System.Windows.Forms.CheckBox();
+            this.lblOptions = new System.Windows.Forms.Label();
+            this.rabFilterNone = new System.Windows.Forms.RadioButton();
+            this.rabFilterWormhole = new System.Windows.Forms.RadioButton();
+            this.nudFilterWormhole = new System.Windows.Forms.NumericUpDown();
+            this.rabFilterRange = new System.Windows.Forms.RadioButton();
+            this.lblFilter = new System.Windows.Forms.Label();
             this.lblGalaxySelection = new System.Windows.Forms.Label();
             this.cobSelectionGalaxy = new System.Windows.Forms.ComboBox();
             this.btnImport = new System.Windows.Forms.Button();
@@ -63,19 +71,16 @@
             this.cmsRightClickCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.cmsRightClickHideColumn = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1OptionsSystemWide = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblFilter = new System.Windows.Forms.Label();
-            this.rabFilterRange = new System.Windows.Forms.RadioButton();
-            this.rabFilterWormhole = new System.Windows.Forms.RadioButton();
-            this.nudFilterWormhole = new System.Windows.Forms.NumericUpDown();
-            this.rabFilterNone = new System.Windows.Forms.RadioButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.cmsRightClickHideRow = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsRightClickFreezeColumn = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvSurveyColumnGalaxy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnSector = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnSystem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnPlanet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvSurveyColumnOrbit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnZone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnCoordinates = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvSurveyColumnOrbit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnBodyType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnPopulationLimit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceBolite = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -122,20 +127,16 @@
             this.dgvSurveyColumnResourcePlantFiber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceSpices = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceVegetable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.cmsRightClickHideRow = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblOptions = new System.Windows.Forms.Label();
-            this.cbxOptionsSystemWide = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFilterWormhole)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudFilterRange)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSurvey)).BeginInit();
             this.cmsRightClick.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudFilterWormhole)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -163,19 +164,19 @@
             // menuStrip1FileImport
             // 
             this.menuStrip1FileImport.Name = "menuStrip1FileImport";
-            this.menuStrip1FileImport.Size = new System.Drawing.Size(152, 22);
+            this.menuStrip1FileImport.Size = new System.Drawing.Size(110, 22);
             this.menuStrip1FileImport.Text = "Import";
             this.menuStrip1FileImport.Click += new System.EventHandler(this.menuStrip1FileImport_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(107, 6);
             // 
             // menuStrip1FileExit
             // 
             this.menuStrip1FileExit.Name = "menuStrip1FileExit";
-            this.menuStrip1FileExit.Size = new System.Drawing.Size(152, 22);
+            this.menuStrip1FileExit.Size = new System.Drawing.Size(110, 22);
             this.menuStrip1FileExit.Text = "Exit";
             this.menuStrip1FileExit.Click += new System.EventHandler(this.menuStrip1FileExit_Click);
             // 
@@ -186,6 +187,13 @@
             this.menuStrip1Options.Name = "menuStrip1Options";
             this.menuStrip1Options.Size = new System.Drawing.Size(61, 20);
             this.menuStrip1Options.Text = "Options";
+            // 
+            // menuStrip1OptionsSystemWide
+            // 
+            this.menuStrip1OptionsSystemWide.Name = "menuStrip1OptionsSystemWide";
+            this.menuStrip1OptionsSystemWide.Size = new System.Drawing.Size(176, 22);
+            this.menuStrip1OptionsSystemWide.Text = "System Wide mode";
+            this.menuStrip1OptionsSystemWide.Click += new System.EventHandler(this.menuStrip1OptionsSystemWide_Click);
             // 
             // menuStrip1Help
             // 
@@ -372,6 +380,91 @@
             this.splitContainer1.SplitterDistance = 98;
             this.splitContainer1.TabIndex = 9;
             // 
+            // cbxOptionsSystemWide
+            // 
+            this.cbxOptionsSystemWide.AutoCheck = false;
+            this.cbxOptionsSystemWide.AutoSize = true;
+            this.cbxOptionsSystemWide.Location = new System.Drawing.Point(3, 358);
+            this.cbxOptionsSystemWide.Name = "cbxOptionsSystemWide";
+            this.cbxOptionsSystemWide.Size = new System.Drawing.Size(85, 17);
+            this.cbxOptionsSystemWide.TabIndex = 1;
+            this.cbxOptionsSystemWide.Text = "SystemWide";
+            this.cbxOptionsSystemWide.UseVisualStyleBackColor = true;
+            this.cbxOptionsSystemWide.Click += new System.EventHandler(this.cbxOptionsSystemWide_Click);
+            // 
+            // lblOptions
+            // 
+            this.lblOptions.AutoSize = true;
+            this.lblOptions.Location = new System.Drawing.Point(3, 342);
+            this.lblOptions.Name = "lblOptions";
+            this.lblOptions.Size = new System.Drawing.Size(46, 13);
+            this.lblOptions.TabIndex = 1;
+            this.lblOptions.Text = "Options:";
+            // 
+            // rabFilterNone
+            // 
+            this.rabFilterNone.AutoCheck = false;
+            this.rabFilterNone.AutoSize = true;
+            this.rabFilterNone.Location = new System.Drawing.Point(3, 224);
+            this.rabFilterNone.Name = "rabFilterNone";
+            this.rabFilterNone.Size = new System.Drawing.Size(51, 17);
+            this.rabFilterNone.TabIndex = 15;
+            this.rabFilterNone.TabStop = true;
+            this.rabFilterNone.Text = "None";
+            this.rabFilterNone.UseVisualStyleBackColor = true;
+            this.rabFilterNone.Click += new System.EventHandler(this.rabFilter_Click);
+            // 
+            // rabFilterWormhole
+            // 
+            this.rabFilterWormhole.AutoCheck = false;
+            this.rabFilterWormhole.AutoSize = true;
+            this.rabFilterWormhole.Location = new System.Drawing.Point(3, 296);
+            this.rabFilterWormhole.Name = "rabFilterWormhole";
+            this.rabFilterWormhole.Size = new System.Drawing.Size(78, 17);
+            this.rabFilterWormhole.TabIndex = 14;
+            this.rabFilterWormhole.TabStop = true;
+            this.rabFilterWormhole.Text = "Wormholes";
+            this.rabFilterWormhole.UseVisualStyleBackColor = true;
+            this.rabFilterWormhole.Click += new System.EventHandler(this.rabFilter_Click);
+            // 
+            // nudFilterWormhole
+            // 
+            this.nudFilterWormhole.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudFilterWormhole.Location = new System.Drawing.Point(3, 319);
+            this.nudFilterWormhole.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudFilterWormhole.Name = "nudFilterWormhole";
+            this.nudFilterWormhole.Size = new System.Drawing.Size(88, 20);
+            this.nudFilterWormhole.TabIndex = 13;
+            this.nudFilterWormhole.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // rabFilterRange
+            // 
+            this.rabFilterRange.AutoCheck = false;
+            this.rabFilterRange.AutoSize = true;
+            this.rabFilterRange.Location = new System.Drawing.Point(3, 247);
+            this.rabFilterRange.Name = "rabFilterRange";
+            this.rabFilterRange.Size = new System.Drawing.Size(78, 17);
+            this.rabFilterRange.TabIndex = 1;
+            this.rabFilterRange.TabStop = true;
+            this.rabFilterRange.Text = "Range (pc)";
+            this.rabFilterRange.UseVisualStyleBackColor = true;
+            this.rabFilterRange.Click += new System.EventHandler(this.rabFilter_Click);
+            // 
+            // lblFilter
+            // 
+            this.lblFilter.AutoSize = true;
+            this.lblFilter.Location = new System.Drawing.Point(3, 208);
+            this.lblFilter.Name = "lblFilter";
+            this.lblFilter.Size = new System.Drawing.Size(32, 13);
+            this.lblFilter.TabIndex = 12;
+            this.lblFilter.Text = "Filter:";
+            // 
             // lblGalaxySelection
             // 
             this.lblGalaxySelection.AutoSize = true;
@@ -435,9 +528,9 @@
             this.dgvSurveyColumnSector,
             this.dgvSurveyColumnSystem,
             this.dgvSurveyColumnPlanet,
-            this.dgvSurveyColumnOrbit,
             this.dgvSurveyColumnZone,
             this.dgvSurveyColumnCoordinates,
+            this.dgvSurveyColumnOrbit,
             this.dgvSurveyColumnBodyType,
             this.dgvSurveyColumnPopulationLimit,
             this.dgvSurveyColumnResourceBolite,
@@ -511,101 +604,50 @@
             this.cmsRightClickCopy,
             this.toolStripSeparator3,
             this.cmsRightClickHideColumn,
+            this.cmsRightClickFreezeColumn,
             this.toolStripSeparator4,
             this.cmsRightClickHideRow});
             this.cmsRightClick.Name = "cmsRightClick";
-            this.cmsRightClick.Size = new System.Drawing.Size(146, 82);
+            this.cmsRightClick.Size = new System.Drawing.Size(154, 104);
             this.cmsRightClick.Opening += new System.ComponentModel.CancelEventHandler(this.cmsRightClick_Opening);
             // 
             // cmsRightClickCopy
             // 
             this.cmsRightClickCopy.Name = "cmsRightClickCopy";
-            this.cmsRightClickCopy.Size = new System.Drawing.Size(145, 22);
+            this.cmsRightClickCopy.Size = new System.Drawing.Size(153, 22);
             this.cmsRightClickCopy.Text = "Copy";
             this.cmsRightClickCopy.Click += new System.EventHandler(this.cmsRightClickCopy_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(142, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(150, 6);
             // 
             // cmsRightClickHideColumn
             // 
             this.cmsRightClickHideColumn.Name = "cmsRightClickHideColumn";
-            this.cmsRightClickHideColumn.Size = new System.Drawing.Size(145, 22);
+            this.cmsRightClickHideColumn.Size = new System.Drawing.Size(153, 22);
             this.cmsRightClickHideColumn.Text = "Hide Column";
             this.cmsRightClickHideColumn.Click += new System.EventHandler(this.cmsRightClickHideColumn_Click);
             // 
-            // menuStrip1OptionsSystemWide
+            // toolStripSeparator4
             // 
-            this.menuStrip1OptionsSystemWide.Name = "menuStrip1OptionsSystemWide";
-            this.menuStrip1OptionsSystemWide.Size = new System.Drawing.Size(176, 22);
-            this.menuStrip1OptionsSystemWide.Text = "System Wide mode";
-            this.menuStrip1OptionsSystemWide.Click += new System.EventHandler(this.menuStrip1OptionsSystemWide_Click);
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(150, 6);
             // 
-            // lblFilter
+            // cmsRightClickHideRow
             // 
-            this.lblFilter.AutoSize = true;
-            this.lblFilter.Location = new System.Drawing.Point(3, 208);
-            this.lblFilter.Name = "lblFilter";
-            this.lblFilter.Size = new System.Drawing.Size(32, 13);
-            this.lblFilter.TabIndex = 12;
-            this.lblFilter.Text = "Filter:";
+            this.cmsRightClickHideRow.Name = "cmsRightClickHideRow";
+            this.cmsRightClickHideRow.Size = new System.Drawing.Size(153, 22);
+            this.cmsRightClickHideRow.Text = "Hide Row";
+            this.cmsRightClickHideRow.Click += new System.EventHandler(this.cmsRightClickHideRow_Click);
             // 
-            // rabFilterRange
+            // cmsRightClickFreezeColumn
             // 
-            this.rabFilterRange.AutoCheck = false;
-            this.rabFilterRange.AutoSize = true;
-            this.rabFilterRange.Location = new System.Drawing.Point(3, 247);
-            this.rabFilterRange.Name = "rabFilterRange";
-            this.rabFilterRange.Size = new System.Drawing.Size(78, 17);
-            this.rabFilterRange.TabIndex = 1;
-            this.rabFilterRange.TabStop = true;
-            this.rabFilterRange.Text = "Range (pc)";
-            this.rabFilterRange.UseVisualStyleBackColor = true;
-            this.rabFilterRange.Click += new System.EventHandler(this.rabFilter_Click);
-            // 
-            // rabFilterWormhole
-            // 
-            this.rabFilterWormhole.AutoCheck = false;
-            this.rabFilterWormhole.AutoSize = true;
-            this.rabFilterWormhole.Location = new System.Drawing.Point(3, 296);
-            this.rabFilterWormhole.Name = "rabFilterWormhole";
-            this.rabFilterWormhole.Size = new System.Drawing.Size(78, 17);
-            this.rabFilterWormhole.TabIndex = 14;
-            this.rabFilterWormhole.TabStop = true;
-            this.rabFilterWormhole.Text = "Wormholes";
-            this.rabFilterWormhole.UseVisualStyleBackColor = true;
-            this.rabFilterWormhole.Click += new System.EventHandler(this.rabFilter_Click);
-            // 
-            // nudFilterWormhole
-            // 
-            this.nudFilterWormhole.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudFilterWormhole.Location = new System.Drawing.Point(3, 319);
-            this.nudFilterWormhole.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.nudFilterWormhole.Name = "nudFilterWormhole";
-            this.nudFilterWormhole.Size = new System.Drawing.Size(88, 20);
-            this.nudFilterWormhole.TabIndex = 13;
-            this.nudFilterWormhole.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // rabFilterNone
-            // 
-            this.rabFilterNone.AutoCheck = false;
-            this.rabFilterNone.AutoSize = true;
-            this.rabFilterNone.Location = new System.Drawing.Point(3, 224);
-            this.rabFilterNone.Name = "rabFilterNone";
-            this.rabFilterNone.Size = new System.Drawing.Size(51, 17);
-            this.rabFilterNone.TabIndex = 15;
-            this.rabFilterNone.TabStop = true;
-            this.rabFilterNone.Text = "None";
-            this.rabFilterNone.UseVisualStyleBackColor = true;
-            this.rabFilterNone.Click += new System.EventHandler(this.rabFilter_Click);
+            this.cmsRightClickFreezeColumn.Name = "cmsRightClickFreezeColumn";
+            this.cmsRightClickFreezeColumn.Size = new System.Drawing.Size(153, 22);
+            this.cmsRightClickFreezeColumn.Text = "Freeze Column";
+            this.cmsRightClickFreezeColumn.Click += new System.EventHandler(this.cmsRightClickFreezeColumn_Click);
             // 
             // dgvSurveyColumnGalaxy
             // 
@@ -631,12 +673,6 @@
             this.dgvSurveyColumnPlanet.Name = "dgvSurveyColumnPlanet";
             this.dgvSurveyColumnPlanet.ReadOnly = true;
             // 
-            // dgvSurveyColumnOrbit
-            // 
-            this.dgvSurveyColumnOrbit.HeaderText = "Orbit";
-            this.dgvSurveyColumnOrbit.Name = "dgvSurveyColumnOrbit";
-            this.dgvSurveyColumnOrbit.ReadOnly = true;
-            // 
             // dgvSurveyColumnZone
             // 
             this.dgvSurveyColumnZone.HeaderText = "Zone";
@@ -648,6 +684,12 @@
             this.dgvSurveyColumnCoordinates.HeaderText = "Coordinates";
             this.dgvSurveyColumnCoordinates.Name = "dgvSurveyColumnCoordinates";
             this.dgvSurveyColumnCoordinates.ReadOnly = true;
+            // 
+            // dgvSurveyColumnOrbit
+            // 
+            this.dgvSurveyColumnOrbit.HeaderText = "Orbit";
+            this.dgvSurveyColumnOrbit.Name = "dgvSurveyColumnOrbit";
+            this.dgvSurveyColumnOrbit.ReadOnly = true;
             // 
             // dgvSurveyColumnBodyType
             // 
@@ -925,39 +967,6 @@
             this.dgvSurveyColumnResourceVegetable.Name = "dgvSurveyColumnResourceVegetable";
             this.dgvSurveyColumnResourceVegetable.ReadOnly = true;
             // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(142, 6);
-            // 
-            // cmsRightClickHideRow
-            // 
-            this.cmsRightClickHideRow.Name = "cmsRightClickHideRow";
-            this.cmsRightClickHideRow.Size = new System.Drawing.Size(145, 22);
-            this.cmsRightClickHideRow.Text = "Hide Row";
-            this.cmsRightClickHideRow.Click += new System.EventHandler(this.cmsRightClickHideRow_Click);
-            // 
-            // lblOptions
-            // 
-            this.lblOptions.AutoSize = true;
-            this.lblOptions.Location = new System.Drawing.Point(3, 342);
-            this.lblOptions.Name = "lblOptions";
-            this.lblOptions.Size = new System.Drawing.Size(46, 13);
-            this.lblOptions.TabIndex = 1;
-            this.lblOptions.Text = "Options:";
-            // 
-            // cbxOptionsSystemWide
-            // 
-            this.cbxOptionsSystemWide.AutoCheck = false;
-            this.cbxOptionsSystemWide.AutoSize = true;
-            this.cbxOptionsSystemWide.Location = new System.Drawing.Point(3, 358);
-            this.cbxOptionsSystemWide.Name = "cbxOptionsSystemWide";
-            this.cbxOptionsSystemWide.Size = new System.Drawing.Size(85, 17);
-            this.cbxOptionsSystemWide.TabIndex = 1;
-            this.cbxOptionsSystemWide.Text = "SystemWide";
-            this.cbxOptionsSystemWide.UseVisualStyleBackColor = true;
-            this.cbxOptionsSystemWide.Click += new System.EventHandler(this.cbxOptionsSystemWide_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -978,10 +987,10 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nudFilterWormhole)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudFilterRange)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSurvey)).EndInit();
             this.cmsRightClick.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nudFilterWormhole)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1028,13 +1037,18 @@
         private System.Windows.Forms.RadioButton rabFilterRange;
         private System.Windows.Forms.Label lblFilter;
         private System.Windows.Forms.RadioButton rabFilterNone;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem cmsRightClickHideRow;
+        private System.Windows.Forms.CheckBox cbxOptionsSystemWide;
+        private System.Windows.Forms.Label lblOptions;
+        private System.Windows.Forms.ToolStripMenuItem cmsRightClickFreezeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnGalaxy;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnSector;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnSystem;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnPlanet;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnOrbit;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnZone;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnCoordinates;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnOrbit;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnBodyType;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnPopulationLimit;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceBolite;
@@ -1081,10 +1095,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourcePlantFiber;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceSpices;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceVegetable;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripMenuItem cmsRightClickHideRow;
-        private System.Windows.Forms.CheckBox cbxOptionsSystemWide;
-        private System.Windows.Forms.Label lblOptions;
     }
 }
 

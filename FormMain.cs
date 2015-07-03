@@ -527,7 +527,13 @@ namespace HazeronProspector
                 dgv = ((sender as ContextMenuStrip).SourceControl as DataGridView);
             DataGridViewCell currentCell = dgv.CurrentCell;
 
-            // Nothing here yet.
+            // Freeze Column.
+            DataGridViewColumn nextCoumn = dgv.Columns.GetNextColumn(currentCell.OwningColumn, DataGridViewElementStates.Visible, DataGridViewElementStates.None);
+            if (currentCell.OwningColumn.Frozen && (nextCoumn == null || !nextCoumn.Frozen))
+                cmsRightClickFreezeColumn.Text = "Unfreeze Column";
+            else
+                cmsRightClickFreezeColumn.Text = "Freeze Column";
+
         }
 
         private void cmsRightClickCopy_Click(object sender, EventArgs e)
@@ -569,6 +575,41 @@ namespace HazeronProspector
                 // Hide the column.
                 currentCell.OwningColumn.Visible = false;
                 toolStripStatusLabel1.Text = "\"" + currentCell.OwningColumn.HeaderText + "\" column hidden";
+            }
+        }
+
+        private void cmsRightClickFreezeColumn_Click(object sender, EventArgs e)
+        { // http://stackoverflow.com/questions/4886327/determine-what-control-the-contextmenustrip-was-used-on
+            DataGridView dgv = (sender as DataGridView);
+            if (dgv == null)
+                dgv = (((sender as ToolStripItem).Owner as ContextMenuStrip).SourceControl as DataGridView);
+            DataGridViewCell currentCell = dgv.CurrentCell;
+            if (currentCell != null)
+            {
+                foreach (DataGridViewColumn column in dgv.Columns)
+                {
+                    column.DividerWidth = 0;
+                }
+                DataGridViewColumn nextCoumn = dgv.Columns.GetNextColumn(currentCell.OwningColumn, DataGridViewElementStates.Visible, DataGridViewElementStates.None);
+                // Is it frozen already?
+                if (currentCell.OwningColumn.Frozen && (nextCoumn == null || !nextCoumn.Frozen))
+                {
+                    // Unfreeze all columns.
+                    foreach (DataGridViewColumn column in dgv.Columns)
+                    {
+                        column.Frozen = false;
+                    }
+                    toolStripStatusLabel1.Text = "\"" + currentCell.OwningColumn.HeaderText + "\" column unfrozen";
+                }
+                else
+                {
+                    // Freeze the column.
+                    currentCell.OwningColumn.Frozen = true;
+                    if (nextCoumn != null)
+                        nextCoumn.Frozen = false;
+                    currentCell.OwningColumn.DividerWidth = 2;
+                    toolStripStatusLabel1.Text = "\"" + currentCell.OwningColumn.HeaderText + "\" column frozen";
+                }
             }
         }
 
