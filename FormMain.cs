@@ -528,7 +528,7 @@ namespace HazeronProspector
             if (currentCell != null)
             {
                 // Check if the cell is empty.
-                if (!String.IsNullOrEmpty(currentCell.Value.ToString()))
+                if (currentCell.Value != null && currentCell.Value.ToString() != String.Empty)
                 { // If not empty, add to clipboard and inform the user.
                     Clipboard.SetText(currentCell.Value.ToString());
                     toolStripStatusLabel1.Text = "Cell content copied to clipboard (\"" + currentCell.Value.ToString() + "\")";
