@@ -408,13 +408,24 @@ namespace HazeronProspector
             const int ColumnResourceNameLenght = 23; // "dgvSurveyColumnResource".Length
             if (columnName.Length > ColumnResourceNameLenght && columnName.Remove(ColumnResourceNameLenght) == "dgvSurveyColumnResource")
             {
-                int value1 = 0;
+                int value1 = -1;
                 if ((e.CellValue1 as Resource) != null)
                     value1 = (e.CellValue1 as Resource).Quality;
-                int value2 = 0;
+                int value2 = -1;
                 if ((e.CellValue2 as Resource) != null)
                     value2 = (e.CellValue2 as Resource).Quality;
                 e.SortResult = CompareNumbers(value1, value2);
+
+                if (e.SortResult == 0)
+                {
+                    value1 = -1;
+                    if ((e.CellValue1 as Resource) != null)
+                        value1 = (e.CellValue1 as Resource).Abundance;
+                    value2 = -1;
+                    if ((e.CellValue2 as Resource) != null)
+                        value2 = (e.CellValue2 as Resource).Abundance;
+                    e.SortResult = CompareNumbers(value1, value2);
+                }
             }
             else
             {
