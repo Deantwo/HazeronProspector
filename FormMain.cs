@@ -96,11 +96,7 @@ namespace HazeronProspector
             toolStripStatusLabel1.Text = "Searching star map...";
 
             #region Temparory code! Remove once a "Column viability menu" is implemented!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!111one
-            foreach (DataGridViewColumn column in dgvSurvey.Columns)
-            {
-                _columnVisability[column.Name] = true;
-                column.Visible = true;
-            }
+            ResetTableSettings();
             #endregion
 
             List<HSystem> selectedSystems = new List<HSystem>();
@@ -234,6 +230,33 @@ namespace HazeronProspector
             cbxOptionsSystemWide.Checked = _optionSystemWide;
         }
 
+        private void ResetTableSettings()
+        {
+            // Show all columns.
+            foreach (DataGridViewColumn column in dgvSurvey.Columns)
+            {
+                _columnVisability[column.Name] = true;
+                column.Visible = true;
+            }
+            // Unfreeze all columns.
+            foreach (DataGridViewColumn column in dgvSurvey.Columns)
+            {
+                column.Frozen = false;
+                column.DividerWidth = 0;
+            }
+            // Freeze specific column.
+            if (!_optionSystemWide)
+            {
+                dgvSurvey.Columns["dgvSurveyColumnZone"].Frozen = true;
+                dgvSurvey.Columns["dgvSurveyColumnZone"].DividerWidth = 2;
+            }
+            else
+            {
+                dgvSurvey.Columns["dgvSurveyColumnSystem"].Frozen = true;
+                dgvSurvey.Columns["dgvSurveyColumnSystem"].DividerWidth = 2;
+            }
+        }
+
         #region Buttons
         private void btnImport_Click(object sender, EventArgs e)
         {
@@ -328,18 +351,16 @@ namespace HazeronProspector
             if (_optionSystemWide)
             { // SystemWide mode
                 dgvSurvey.Rows.Add();
-                int row = dgvSurvey.RowCount - 1;
-                dgvSurvey.Rows[row].Cells["dgvSurveyColumnGalaxy"].Value = system.HostSector.HostGalaxy;
-                dgvSurvey.Rows[row].Cells["dgvSurveyColumnSector"].Value = system.HostSector;
-                dgvSurvey.Rows[row].Cells["dgvSurveyColumnSystem"].Value = system;
-                dgvSurvey.Rows[row].Cells["dgvSurveyColumnPlanet"].Value = system.CelestialBodies.Values.Count(x =>  x.Type != CelestialBodyType.Star && x.Type != CelestialBodyType.Ring) + " planets (" + system.CelestialBodies.Values.Count(x => x.Orbit == CelestialBodyOrbit.Habitable && (x.Type == CelestialBodyType.Planet || x.Type == CelestialBodyType.LargeMoon || x.Type == CelestialBodyType.RingworldArc)) + " habitable)";
-                dgvSurvey.Rows[row].Cells["dgvSurveyColumnOrbit"].Value = system.CelestialBodies.Values.Count(x => x.Type == CelestialBodyType.Star) + " Stars";
-                dgvSurvey.Rows[row].Cells["dgvSurveyColumnCoordinates"].Value = system.Coord;
+                DataGridViewRow row = dgvSurvey.Rows[dgvSurvey.RowCount - 1];
+                row.Cells["dgvSurveyColumnGalaxy"].Value = system.HostSector.HostGalaxy;
+                row.Cells["dgvSurveyColumnSector"].Value = system.HostSector;
+                row.Cells["dgvSurveyColumnSystem"].Value = system;
+                row.Cells["dgvSurveyColumnPlanet"].Value = system.CelestialBodies.Values.Count(x =>  x.Type != CelestialBodyType.Star && x.Type != CelestialBodyType.Ring) + " planets (" + system.CelestialBodies.Values.Count(x => x.Orbit == CelestialBodyOrbit.Habitable && (x.Type == CelestialBodyType.Planet || x.Type == CelestialBodyType.LargeMoon || x.Type == CelestialBodyType.RingworldArc)) + " habitable)";
+                row.Cells["dgvSurveyColumnOrbit"].Value = system.CelestialBodies.Values.Count(x => x.Type == CelestialBodyType.Star) + " Stars";
+                row.Cells["dgvSurveyColumnCoordinates"].Value = system.Coord;
                 foreach (Resource resource in system.BestResources().Values)
                 {
-                    DataGridViewCell cell = dgvSurvey.Rows[row].Cells["dgvSurveyColumnResource" + Enum.GetName(typeof(ResourceType), (int)resource.Type)];
-                    cell.Value = resource;
-                    cell.ToolTipText = resource.HostZone.HostCelestialBody.Name + ", " + resource.HostZone.Name;
+                    TableAddResourceRow(row, resource);
                 }
             }
             else
@@ -349,14 +370,36 @@ namespace HazeronProspector
                     foreach (Zone zone in planet.ResourceZones)
                     {
                         dgvSurvey.Rows.Add();
-                        int row = dgvSurvey.RowCount - 1;
-                        dgvSurvey.Rows[row].Cells["dgvSurveyColumnGalaxy"].Value = system.HostSector.HostGalaxy;
-                        dgvSurvey.Rows[row].Cells["dgvSurveyColumnSector"].Value = system.HostSector;
-                        dgvSurvey.Rows[row].Cells["dgvSurveyColumnSystem"].Value = system;
-                        dgvSurvey.Rows[row].Cells["dgvSurveyColumnPlanet"].Value = planet;
-                        dgvSurvey.Rows[row].Cells["dgvSurveyColumnOrbit"].Value = Enum.GetName(typeof(CelestialBodyOrbit), (int)planet.Orbit);
-                        dgvSurvey.Rows[row].Cells["dgvSurveyColumnZone"].Value = zone;
-                        dgvSurvey.Rows[row].Cells["dgvSurveyColumnCoordinates"].Value = system.Coord;
+                        DataGridViewRow row = dgvSurvey.Rows[dgvSurvey.RowCount - 1];
+                        row.Cells["dgvSurveyColumnGalaxy"].Value = system.HostSector.HostGalaxy;
+                        row.Cells["dgvSurveyColumnSector"].Value = system.HostSector;
+                        row.Cells["dgvSurveyColumnSystem"].Value = system;
+                        row.Cells["dgvSurveyColumnPlanet"].Value = planet;
+                        row.Cells["dgvSurveyColumnZone"].Value = zone;
+                        string orbit = "ERROR";
+                        switch (planet.Orbit)
+                        {
+                            case CelestialBodyOrbit.Star:
+                                orbit = "Star";
+                                break;
+                            case CelestialBodyOrbit.Inferno:
+                                orbit = "Inferno";
+                                break;
+                            case CelestialBodyOrbit.Inner:
+                                orbit = "Inner";
+                                break;
+                            case CelestialBodyOrbit.Habitable:
+                                orbit = "Habitable";
+                                break;
+                            case CelestialBodyOrbit.Outer:
+                                orbit = "Outer";
+                                break;
+                            case CelestialBodyOrbit.Frigid:
+                                orbit = "Frigid";
+                                break;
+                        }
+                        row.Cells["dgvSurveyColumnOrbit"].Value = orbit;
+                        row.Cells["dgvSurveyColumnCoordinates"].Value = system.Coord;
                         string type = "ERROR";
                         switch (planet.Type)
                         {
@@ -382,16 +425,24 @@ namespace HazeronProspector
                                 type = "Ringworld Arc";
                                 break;
                         }
-                        dgvSurvey.Rows[row].Cells["dgvSurveyColumnBodyType"].Value = type;
-                        dgvSurvey.Rows[row].Cells["dgvSurveyColumnPopulationLimit"].Value = planet.PopulationLimit;
+                        row.Cells["dgvSurveyColumnBodyType"].Value = type;
+                        row.Cells["dgvSurveyColumnPopulationLimit"].Value = planet.PopulationLimit;
                         foreach (Resource resource in zone.Resources.Values)
                         {
-                            DataGridViewCell cell = dgvSurvey.Rows[row].Cells["dgvSurveyColumnResource" + Enum.GetName(typeof(ResourceType), (int)resource.Type)];
-                            cell.Value = resource;
+                            TableAddResourceRow(row, resource);
                         }
                     }
                 }
             }
+        }
+
+        private void TableAddResourceRow(DataGridViewRow row, Resource resource)
+        {
+            DataGridViewCell cell = row.Cells["dgvSurveyColumnResource" + Enum.GetName(typeof(ResourceType), (int)resource.Type)];
+            cell.Value = resource;
+            cell.Style.ForeColor = resource.TechLevelColor;
+            cell.Style.SelectionForeColor = resource.TechLevelColor;
+            cell.ToolTipText = resource.HostZone.HostCelestialBody.Name + ", " + resource.HostZone.Name;
         }
 
         private void TableClear()
@@ -643,6 +694,20 @@ namespace HazeronProspector
         private void menuStrip1OptionsSystemWide_Click(object sender, EventArgs e)
         {
             OptionsSystemWide();
+        }
+
+        private void menuStrip1OptionsShowHidenRows_Click(object sender, EventArgs e)
+        {
+            // Show all rows.
+            foreach (DataGridViewRow row in dgvSurvey.Rows)
+            {
+                row.Visible = true;
+            }
+        }
+
+        private void menuStrip1OptionsResetTableSettings_Click(object sender, EventArgs e)
+        {
+            ResetTableSettings();
         }
 
         private void menuStrip1HelpGithub_Click(object sender, EventArgs e)

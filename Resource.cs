@@ -87,6 +87,26 @@ namespace HazeronProspector
             get { return _abundance; }
         }
 
+        public int TechLevel
+        {
+            get { return 1 + (_quality / 8); }
+        }
+
+        public System.Drawing.Color TechLevelColor
+        {
+            get
+            {
+                if (TechLevel < 14)
+                    return System.Drawing.Color.Red;
+                else if (TechLevel < 24)
+                    return System.Drawing.Color.Orange;
+                else if (TechLevel < 30)
+                    return System.Drawing.Color.Green;
+                else
+                    return System.Drawing.Color.Blue;
+            }
+        }
+
         public Resource(string name, byte quality, byte abundance)
         {
             _name = name;
