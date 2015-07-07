@@ -96,6 +96,18 @@ namespace HazeronProspector
         {
             get
             {
+                if ((Type == ResourceType.Cryozine && TechLevel < 4)
+                 || (Type == ResourceType.Phlogiston && TechLevel < 5)
+                 || (Type == ResourceType.Ioplasma && TechLevel < 7)
+                 || (Type == ResourceType.Magmex && TechLevel < 10)
+                 || (Type == ResourceType.Myrathane && TechLevel < 13)
+                 || (Type == ResourceType.Polytaride && TechLevel < 16)
+                 || (Type == ResourceType.Vulcanite && TechLevel < 19)
+                 || (Type == ResourceType.AntifluxParticles && TechLevel < 24)
+                 || (Type == ResourceType.Bolite && TechLevel < 24)
+                 || (Type == ResourceType.BorexinoPrecipitate && TechLevel < 30)
+                   )
+                    return System.Drawing.Color.Gray;
                 if (TechLevel < 14)
                     return System.Drawing.Color.Red;
                 else if (TechLevel < 24)
