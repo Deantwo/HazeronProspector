@@ -189,15 +189,20 @@ namespace HazeronProspector
                 }
                 else
                 {
+                    List<HSystem> nextWormholeReach = selectedSystems.ToList();
                     for (int i = 0; i < nudFilterWormhole.Value; i++)
                     {
-                        List<HSystem> currentWormholeReach = selectedSystems.ToList();
+                        List<HSystem> currentWormholeReach = nextWormholeReach.ToList();
+                        nextWormholeReach.Clear();
                         foreach (HSystem system in currentWormholeReach)
                         {
                             foreach (HSystem destinationSystem in system.WormholeLinks)
                             {
                                 if (!selectedSystems.Contains(destinationSystem))
+                                {
+                                    nextWormholeReach.Add(destinationSystem);
                                     selectedSystems.Add(destinationSystem);
+                                }
                             }
                         }
                     }
