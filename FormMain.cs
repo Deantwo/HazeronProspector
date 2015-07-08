@@ -86,6 +86,7 @@ namespace HazeronProspector
             btnSearch.Enabled = true;
 
             Galaxy[] galaxies = _galaxies.Values.OrderBy(x => x.Name).ToArray();
+            cobSelectionGalaxy.Items.Clear();
             cobSelectionGalaxy.Items.AddRange(galaxies);
             cobSelectionGalaxy.SelectedIndex = 0;
             toolStripStatusLabel1.Text = "Star map loaded";
