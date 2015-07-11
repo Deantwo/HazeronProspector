@@ -381,58 +381,53 @@ namespace HazeronProspector
                         row.Cells["dgvSurveyColumnSector"].Value = system.HostSector;
                         row.Cells["dgvSurveyColumnSystem"].Value = system;
                         row.Cells["dgvSurveyColumnPlanet"].Value = planet;
-                        row.Cells["dgvSurveyColumnZone"].Value = zone;
-                        string orbit = "ERROR";
+                        if (zone.HostCelestialBody.ResourceZones.Length > 1)
+                            row.Cells["dgvSurveyColumnZone"].Value = zone;
                         switch (planet.Orbit)
                         {
-                            case CelestialBodyOrbit.Star:
-                                orbit = "Star";
-                                break;
                             case CelestialBodyOrbit.Inferno:
-                                orbit = "Inferno";
+                                row.Cells["dgvSurveyColumnOrbit"].Value = "Inferno";
                                 break;
                             case CelestialBodyOrbit.Inner:
-                                orbit = "Inner";
+                                row.Cells["dgvSurveyColumnOrbit"].Value = "Inner";
                                 break;
                             case CelestialBodyOrbit.Habitable:
-                                orbit = "Habitable";
+                                row.Cells["dgvSurveyColumnOrbit"].Value = "Habitable";
                                 break;
                             case CelestialBodyOrbit.Outer:
-                                orbit = "Outer";
+                                row.Cells["dgvSurveyColumnOrbit"].Value = "Outer";
                                 break;
                             case CelestialBodyOrbit.Frigid:
-                                orbit = "Frigid";
+                                row.Cells["dgvSurveyColumnOrbit"].Value = "Frigid";
                                 break;
                         }
-                        row.Cells["dgvSurveyColumnOrbit"].Value = orbit;
                         row.Cells["dgvSurveyColumnCoordinates"].Value = system.Coord;
-                        string type = "ERROR";
                         switch (planet.Type)
                         {
                             case CelestialBodyType.Star:
-                                type = "Star";
+                                row.Cells["dgvSurveyColumnBodyType"].Value = "Star";
                                 break;
                             case CelestialBodyType.Planet:
-                                type = "Planet";
+                                row.Cells["dgvSurveyColumnBodyType"].Value = "Planet";
                                 break;
                             case CelestialBodyType.Moon:
-                                type = "Moon";
+                                row.Cells["dgvSurveyColumnBodyType"].Value = "Moon";
                                 break;
                             case CelestialBodyType.GasGiant:
-                                type = "Gas Giant";
+                                row.Cells["dgvSurveyColumnBodyType"].Value = "Gas Giant";
                                 break;
                             case CelestialBodyType.LargeMoon:
-                                type = "Large Moon";
+                                row.Cells["dgvSurveyColumnBodyType"].Value = "Large Moon";
                                 break;
                             case CelestialBodyType.Ring:
-                                type = "Ring";
+                                row.Cells["dgvSurveyColumnBodyType"].Value = "Ring";
                                 break;
                             case CelestialBodyType.RingworldArc:
-                                type = "Ringworld Arc";
+                                row.Cells["dgvSurveyColumnBodyType"].Value = "Ringworld Arc";
                                 break;
                         }
-                        row.Cells["dgvSurveyColumnBodyType"].Value = type;
-                        row.Cells["dgvSurveyColumnPopulationLimit"].Value = planet.PopulationLimit;
+                        if (planet.PopulationLimit > 0)
+                            row.Cells["dgvSurveyColumnPopulationLimit"].Value = planet.PopulationLimit;
                         foreach (Resource resource in zone.Resources.Values)
                         {
                             TableAddResourceRow(row, resource);
@@ -448,7 +443,19 @@ namespace HazeronProspector
             cell.Value = resource;
             cell.Style.ForeColor = resource.TechLevelColor;
             cell.Style.SelectionForeColor = resource.TechLevelColor;
-            cell.ToolTipText = resource.HostZone.HostCelestialBody.Name + ", " + resource.HostZone.Name;
+            if (resource.HostZone.HostCelestialBody.ResourceZones.Length == 1
+             || (resource.HostZone.HostCelestialBody.ResourceZones.Length > 1
+              && (resource.Type == ResourceType.Air
+               || resource.Type == ResourceType.Hydrogen
+               || resource.Type == ResourceType.Cryozine
+               || resource.Type == ResourceType.Ioplasma
+               || resource.Type == ResourceType.Water
+               || resource.Type == ResourceType.Myrathane
+               || resource.Type == ResourceType.Magmex
+                )))
+                cell.ToolTipText = resource.HostZone.HostCelestialBody.Name;
+            else
+                cell.ToolTipText = resource.HostZone.HostCelestialBody.Name + ", " + resource.HostZone.Name;
         }
 
         private void TableClear()
