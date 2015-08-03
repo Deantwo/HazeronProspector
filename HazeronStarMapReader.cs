@@ -26,15 +26,7 @@ namespace HazeronProspector
         public HazeronStarMapReader(string filename)
         {
             _filename = filename;
-            string content = File.ReadAllText(filename);
-
-            // Found here: http://stackoverflow.com/questions/17795167/xml-loaddata-data-at-the-root-level-is-invalid-line-1-position-1
-            string byteOrderMarkUtf8 = Encoding.UTF8.GetString(Encoding.UTF8.GetPreamble());
-            if (content.StartsWith(byteOrderMarkUtf8))
-            {
-                content = content.Remove(0, byteOrderMarkUtf8.Length);
-            }
-            _xmlDoc.LoadXml(content);
+            _xmlDoc.Load(_filename);
         }
 
         public void ReadSectorsAndSystems(ref Dictionary<string, Galaxy> galaxyList, ref Dictionary<string, Sector> sectorList, ref Dictionary<string, HSystem> systemList)
