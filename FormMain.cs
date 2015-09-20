@@ -361,7 +361,7 @@ namespace HazeronProspector
                 row.Cells["dgvSurveyColumnGalaxy"].Value = system.HostSector.HostGalaxy;
                 row.Cells["dgvSurveyColumnSector"].Value = system.HostSector;
                 row.Cells["dgvSurveyColumnSystem"].Value = system;
-                row.Cells["dgvSurveyColumnPlanet"].Value = system.CelestialBodies.Values.Count(x =>  x.Type != CelestialBodyType.Star && x.Type != CelestialBodyType.Ring) + " planets (" + system.CelestialBodies.Values.Count(x => x.Orbit == CelestialBodyOrbit.Habitable && (x.Type == CelestialBodyType.Planet || x.Type == CelestialBodyType.LargeMoon || x.Type == CelestialBodyType.RingworldArc)) + " habitable)";
+                row.Cells["dgvSurveyColumnPlanet"].Value = system.CelestialBodies.Values.Count(x =>  x.Type != CelestialBodyType.Star && x.Type != CelestialBodyType.Ring) + " planets (" + system.HabitbleCount() + " habitable)";
                 row.Cells["dgvSurveyColumnOrbit"].Value = system.CelestialBodies.Values.Count(x => x.Type == CelestialBodyType.Star) + " Stars";
                 row.Cells["dgvSurveyColumnCoordinates"].Value = system.Coord;
                 foreach (Resource resource in system.BestResources().Values)
@@ -502,6 +502,12 @@ namespace HazeronProspector
                 e.SortResult = String.Compare(
                     dgv.Rows[e.RowIndex1].Cells["dgvSurveyColumnPlanet"].Value.ToString(),
                     dgv.Rows[e.RowIndex2].Cells["dgvSurveyColumnPlanet"].Value.ToString());
+            }
+            if (e.SortResult == 0)
+            {
+                e.SortResult = String.Compare(
+                    dgv.Rows[e.RowIndex1].Cells["dgvSurveyColumnZone"].Value.ToString(),
+                    dgv.Rows[e.RowIndex2].Cells["dgvSurveyColumnZone"].Value.ToString());
             }
             e.Handled = true;
         }

@@ -80,19 +80,24 @@ namespace HazeronProspector
                 _wormholeLinks.Add(destination);
         }
 
-        public Dictionary<ResourceType, Resource> BestResources()
+        public Dictionary<ResourceType, Resource> BestResources(bool excludeUncolonizable = false)
         {
             List<Dictionary<ResourceType, Resource>> resourceLists = new List<Dictionary<ResourceType, Resource>>();
             foreach (CelestialBody body in _celestialBodies.Values)
             {
                 foreach (Zone zone in body.ResourceZones)
                 {
-                    resourceLists.Add(body.BestResources());
+                    resourceLists.Add(body.BestResources(excludeUncolonizable));
                 }
             }
             return resourceLists.SelectMany(dict => dict)
                          .ToLookup(pair => pair.Key, pair => pair.Value)
                          .ToDictionary(k => k.Key, v => v.Aggregate((i, j) => i.Quality > j.Quality ? i : j));
+        }
+
+        public int HabitbleCount()
+        {
+            return _celestialBodies.Values.Count(x => x.IsHabitable);
         }
 
         public override string ToString()

@@ -73,6 +73,18 @@ namespace HazeronProspector
             get { return _populationLimit; }
         }
 
+        public bool IsHabitable
+        {
+            get
+            {
+                return _orbit == CelestialBodyOrbit.Habitable
+                && (_type == CelestialBodyType.Planet
+                 || _type == CelestialBodyType.LargeMoon
+                 || _type == CelestialBodyType.RingworldArc
+                    );
+            }
+        }
+
         public CelestialBody(string id, string name, string type)
         {
             _id = id;
@@ -191,8 +203,14 @@ namespace HazeronProspector
             _resourceZones[zone].AddResource(resource);
         }
 
-        public Dictionary<ResourceType, Resource> BestResources()
+        public Dictionary<ResourceType, Resource> BestResources(bool excludeUncolonizable = false)
         {
+            if (excludeUncolonizable
+             && (_type == CelestialBodyType.GasGiant
+              || _type == CelestialBodyType.Star
+              || _type == CelestialBodyType.Ring
+                 ))
+                return new Dictionary<ResourceType, Resource>();
             List<Dictionary<ResourceType, Resource>> resourceLists = new List<Dictionary<ResourceType, Resource>>();
             foreach (Zone zone in _resourceZones)
             {
