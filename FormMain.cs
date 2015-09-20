@@ -381,8 +381,7 @@ namespace HazeronProspector
                         row.Cells["dgvSurveyColumnSector"].Value = system.HostSector;
                         row.Cells["dgvSurveyColumnSystem"].Value = system;
                         row.Cells["dgvSurveyColumnPlanet"].Value = planet;
-                        if (zone.HostCelestialBody.ResourceZones.Length > 1)
-                            row.Cells["dgvSurveyColumnZone"].Value = zone;
+                        row.Cells["dgvSurveyColumnZone"].Value = zone;
                         switch (planet.Orbit)
                         {
                             case CelestialBodyOrbit.Inferno:

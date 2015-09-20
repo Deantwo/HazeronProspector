@@ -53,7 +53,10 @@ namespace HazeronProspector
 
         public override string ToString()
         {
-            return (_id + 1).ToString();
+            if (_hostCelestialBody.ResourceZones.Length > 1)
+                return (_id + 1).ToString();
+            else
+                return "";
         }
     }
 }
