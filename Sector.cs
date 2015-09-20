@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HazeronProspector
 {
-    class Sector
+    public class Sector
     {
         protected Dictionary<string, HSystem> _systems = new Dictionary<string, HSystem>();
         public Dictionary<string, HSystem> Systems

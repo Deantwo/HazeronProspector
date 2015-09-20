@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HazeronProspector
 {
-    class HSystem
+    public class HSystem
     {
         protected Dictionary<string, CelestialBody> _celestialBodies = new Dictionary<string, CelestialBody>();
         public Dictionary<string, CelestialBody> CelestialBodies

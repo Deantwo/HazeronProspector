@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HazeronProspector
 {
-    class Galaxy
+    public class Galaxy
     {
         protected Dictionary<string, Sector> _sectors = new Dictionary<string, Sector>();
         public Dictionary<string, Sector> Sectors

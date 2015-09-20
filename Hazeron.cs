@@ -6,7 +6,7 @@ using System.Globalization;
 
 namespace HazeronProspector
 {
-    class Hazeron
+    public class Hazeron
     {
         public const int AbandonmentInterval = 7;
 

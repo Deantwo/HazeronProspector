@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HazeronProspector
 {
-    class Zone
+    public class Zone
     {
         protected CelestialBody _hostCelestialBody;
         public CelestialBody HostCelestialBody

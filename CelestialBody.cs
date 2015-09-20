@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HazeronProspector
 {
-    enum CelestialBodyType
+    public enum CelestialBodyType
     {
         ERROR,
         Star,
@@ -17,7 +17,7 @@ namespace HazeronProspector
         RingworldArc
     }
 
-    enum CelestialBodyOrbit
+    public enum CelestialBodyOrbit
     {
         ERROR,
         Star,
@@ -28,7 +28,7 @@ namespace HazeronProspector
         Frigid
     }
 
-    class CelestialBody
+    public class CelestialBody
     {
         protected HSystem _hostSystem;
         public HSystem HostSystem

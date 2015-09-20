@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HazeronProspector
 {
-    class Coordinate
+    public class Coordinate
     {
         protected double _x;
         public double X

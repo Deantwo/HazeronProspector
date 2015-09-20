@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HazeronProspector
 {
-    enum ResourceType
+    public enum ResourceType
     {
         ERROR,
         AnimalCarcass,
@@ -54,7 +54,7 @@ namespace HazeronProspector
         Preons
     }
 
-    class Resource
+    public class Resource
     {
         protected Zone _hostZone;
         public Zone HostZone
