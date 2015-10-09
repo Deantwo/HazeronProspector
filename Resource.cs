@@ -96,7 +96,8 @@ namespace HazeronProspector
         {
             get
             {
-                if ((Type == ResourceType.Cryozine && TechLevel < 4)
+                if (_abundance == 0
+                 || (Type == ResourceType.Cryozine && TechLevel < 4)
                  || (Type == ResourceType.Phlogiston && TechLevel < 5)
                  || (Type == ResourceType.Ioplasma && TechLevel < 7)
                  || (Type == ResourceType.Magmex && TechLevel < 10)
@@ -112,7 +113,7 @@ namespace HazeronProspector
                     return System.Drawing.Color.Red;
                 else if (TechLevel < 24)
                     return System.Drawing.Color.Orange;
-                else if (TechLevel < 30)
+                else if (TechLevel < 32)
                     return System.Drawing.Color.Green;
                 else
                     return System.Drawing.Color.Blue;
