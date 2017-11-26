@@ -26,6 +26,7 @@ namespace HazeronProspector
         PlantFiber,
         Spices,
         Vegetable,
+        Adamantite,
         Bolite,
         Coal,
         Crystals,
@@ -46,6 +47,8 @@ namespace HazeronProspector
         Oil,
         Phlogiston,
         Polytaride,
+        Viathol,
+        Flomentum,
         Magmex,
         Myrathane,
         Water,
@@ -196,6 +199,9 @@ namespace HazeronProspector
                 case "Vegetable":
                     _type = ResourceType.Vegetable;
                     break;
+                case "Adamantite":
+                    _type = ResourceType.Adamantite;
+                    break;
                 case "Bolite":
                     _type = ResourceType.Bolite;
                     break;
@@ -255,6 +261,12 @@ namespace HazeronProspector
                     break;
                 case "Polytaride":
                     _type = ResourceType.Polytaride;
+                    break;
+                case "Viathol":
+                    _type = ResourceType.Viathol;
+                    break;
+                case "Flomentum":
+                    _type = ResourceType.Flomentum;
                     break;
                 case "Magmex":
                     _type = ResourceType.Magmex;

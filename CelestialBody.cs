@@ -206,8 +206,7 @@ namespace HazeronProspector
         public Dictionary<ResourceType, Resource> BestResources(bool excludeUncolonizable = false)
         {
             if (excludeUncolonizable
-             && (_type == CelestialBodyType.GasGiant
-              || _type == CelestialBodyType.Star
+             && (_type == CelestialBodyType.Star
               || _type == CelestialBodyType.Ring
                  ))
                 return new Dictionary<ResourceType, Resource>();
