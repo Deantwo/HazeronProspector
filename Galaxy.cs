@@ -60,5 +60,17 @@ namespace HazeronProspector
         {
             return _name;
         }
+
+        public override bool Equals(object obj)
+        {
+            Galaxy galaxy = obj as Galaxy;
+            if (galaxy == null)
+                return false;
+            return Equals(galaxy);
+        }
+        public bool Equals(Galaxy galaxy)
+        {
+            return _name == galaxy.Name;
+        }
     }
 }

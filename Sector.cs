@@ -81,5 +81,17 @@ namespace HazeronProspector
         {
             return _name + " (" + _coord.SectorX + ", " + _coord.SectorY + ", " + _coord.SectorZ + ")";
         }
+
+        public override bool Equals(object obj)
+        {
+            Sector sector = obj as Sector;
+            if (sector == null)
+                return false;
+            return Equals(sector);
+        }
+        public bool Equals(Sector sector)
+        {
+            return _id == sector.ID;
+        }
     }
 }

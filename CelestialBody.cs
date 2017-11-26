@@ -225,5 +225,17 @@ namespace HazeronProspector
         {
             return _name;
         }
+
+        public override bool Equals(object obj)
+        {
+            CelestialBody celestialBody = obj as CelestialBody;
+            if (celestialBody == null)
+                return false;
+            return Equals(celestialBody);
+        }
+        public bool Equals(CelestialBody celestialBody)
+        {
+            return _id == celestialBody.ID;
+        }
     }
 }

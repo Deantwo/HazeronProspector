@@ -496,10 +496,24 @@ namespace HazeronProspector
             if (e.SortResult == 0)
             {
                 e.SortResult = String.Compare(
+                    dgv.Rows[e.RowIndex1].Cells["dgvSurveyColumnSector"].Value.ToString(),
+                    dgv.Rows[e.RowIndex2].Cells["dgvSurveyColumnSector"].Value.ToString());
+            }
+            if (e.SortResult == 0)
+            {
+                e.SortResult = String.Compare(
+                    dgv.Rows[e.RowIndex1].Cells["dgvSurveyColumnSystem"].Value.ToString(),
+                    dgv.Rows[e.RowIndex2].Cells["dgvSurveyColumnSystem"].Value.ToString());
+            }
+            if (e.SortResult == 0)
+            {
+                e.SortResult = String.Compare(
                     dgv.Rows[e.RowIndex1].Cells["dgvSurveyColumnPlanet"].Value.ToString(),
                     dgv.Rows[e.RowIndex2].Cells["dgvSurveyColumnPlanet"].Value.ToString());
             }
-            if (e.SortResult == 0)
+            if (e.SortResult == 0
+             && dgv.Rows[e.RowIndex1].Cells["dgvSurveyColumnZone"].Value != null
+             && dgv.Rows[e.RowIndex2].Cells["dgvSurveyColumnZone"].Value != null)
             {
                 e.SortResult = String.Compare(
                     dgv.Rows[e.RowIndex1].Cells["dgvSurveyColumnZone"].Value.ToString(),
