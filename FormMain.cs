@@ -34,10 +34,6 @@ namespace HazeronProspector
 #if DEBUG
             this.Text += " (DEBUG MODE)";
 #endif
-            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
-            //notifyIcon1.BalloonTipTitle = this.Text;
-            //notifyIcon1.Text = this.Text;
-            //notifyIcon1.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
 
             foreach (DataGridViewColumn column in dgvSurvey.Columns)
             {
