@@ -751,7 +751,7 @@ namespace HazeronProspector
 
         private void menuStrip1HelpThread_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(@"http://hazeron.com/phpBB3/viewforum.php?f=124");
+            System.Diagnostics.Process.Start(@"http://hazeron.com/mybb/showthread.php?tid=31");
         }
 
         private void menuStrip1HelpAbout_Click(object sender, EventArgs e)
