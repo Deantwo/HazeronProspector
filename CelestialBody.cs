@@ -9,6 +9,8 @@ namespace HazeronProspector
     {
         ERROR,
         Star,
+        NeutronStar,
+        BlackHole,
         Planet,
         Moon,
         GasGiant,
@@ -124,8 +126,14 @@ namespace HazeronProspector
 
             switch (type)
             {
-                case "Star":
+                case "Photosphere":
                     _type = CelestialBodyType.Star;
+                    break;
+                case "Photon Sphere":
+                    _type = CelestialBodyType.NeutronStar;
+                    break;
+                case "Neutron Sphere":
+                    _type = CelestialBodyType.BlackHole;
                     break;
                 case "Planet":
                     _type = CelestialBodyType.Planet;
@@ -164,6 +172,8 @@ namespace HazeronProspector
                 case "Ringworld Arc 20":
                     _type = CelestialBodyType.RingworldArc;
                     break;
+                default:
+                    throw new Exception("Unknown type.");
             }
 
             switch (orbit)
@@ -186,6 +196,8 @@ namespace HazeronProspector
                 case "Frigid Zone":
                     _orbit = CelestialBodyOrbit.Frigid;
                     break;
+                default:
+                    throw new Exception("Unknown orbit.");
             }
 
             // Planet size to population limit

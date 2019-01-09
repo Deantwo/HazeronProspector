@@ -112,7 +112,7 @@ namespace HazeronProspector
                 XmlNodeList starNodeList = systemNode.SelectNodes("star");
                 foreach (XmlNode starNode in starNodeList)
                 {
-                    CelestialBody star = new CelestialBody(starNode.Attributes["starId"].Value, starNode.Attributes["name"].Value, "Star");
+                    CelestialBody star = new CelestialBody(starNode.Attributes["starId"].Value, starNode.Attributes["name"].Value, starNode.Attributes["shell"].Value);
                     XmlNodeList resourceNodeList = starNode.SelectNodes("resource");
                     foreach (XmlNode resourceNode in resourceNodeList)
                     {
