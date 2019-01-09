@@ -402,6 +402,12 @@ namespace HazeronProspector
                             case CelestialBodyType.Star:
                                 row.Cells["dgvSurveyColumnBodyType"].Value = "Star";
                                 break;
+                            case CelestialBodyType.NeutronStar:
+                                row.Cells["dgvSurveyColumnBodyType"].Value = "Neutron Star";
+                                break;
+                            case CelestialBodyType.BlackHole:
+                                row.Cells["dgvSurveyColumnBodyType"].Value = "Black Holes";
+                                break;
                             case CelestialBodyType.Planet:
                                 row.Cells["dgvSurveyColumnBodyType"].Value = "Planet";
                                 break;
