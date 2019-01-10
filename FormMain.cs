@@ -92,10 +92,6 @@ namespace HazeronProspector
         {
             toolStripStatusLabel1.Text = "Searching star map...";
 
-            #region Temparory code! Remove once a "Column viability menu" is implemented!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!111one
-            ResetTableSettings();
-            #endregion
-
             List<HSystem> selectedSystems = new List<HSystem>();
 
             // Selection of center
@@ -222,14 +218,7 @@ namespace HazeronProspector
             }
             toolStripProgressBar1.Visible = false;
             dgvSurvey.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
-            toolStripStatusLabel1.Text = selectedSystems.Count + " systems found";
-        }
-
-        private void OptionsSystemWide()
-        {
-            _optionSystemWide = !_optionSystemWide;
-            menuStrip1OptionsSystemWide.Checked = _optionSystemWide;
-            cbxOptionsSystemWide.Checked = _optionSystemWide;
+            toolStripStatusLabel1.Text = selectedSystems.Count + " systems found resulting in " + dgvSurvey.Rows.Count + " entries";
         }
 
         private void ResetTableSettings()
@@ -334,7 +323,8 @@ namespace HazeronProspector
 
         private void cbxOptionsSystemWide_Click(object sender, EventArgs e)
         {
-            OptionsSystemWide();
+            _optionSystemWide = !_optionSystemWide;
+            cbxOptionsSystemWide.Checked = _optionSystemWide;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -563,6 +553,13 @@ namespace HazeronProspector
         {
             return Math.Sign(value1.CompareTo(value2));
         }
+
+        private void dgvSurvey_SelectionChanged(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "Entries " + dgvSurvey.Rows.Count;
+            if (dgvSurvey.SelectedRows != null && dgvSurvey.SelectedRows.Count > 0)
+                toolStripStatusLabel1.Text += " (" + dgvSurvey.SelectedRows.Count + " selected)";
+        }
         #endregion
 
         #region DataGridView ContextMenu RightClick
@@ -723,11 +720,6 @@ namespace HazeronProspector
         private void menuStrip1FileExit_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void menuStrip1OptionsSystemWide_Click(object sender, EventArgs e)
-        {
-            OptionsSystemWide();
         }
 
         private void menuStrip1OptionsShowHidenRows_Click(object sender, EventArgs e)

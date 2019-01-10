@@ -36,7 +36,8 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1FileExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1Options = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1OptionsSystemWide = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1OptionsShowHiddenRows = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1OptionsResetTableSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1Help = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1HelpGithub = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1HelpThread = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,6 +76,7 @@
             this.dgvSurveyColumnOrbit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnBodyType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnPopulationLimit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvSurveyColumnResourceAdamantite = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceBolite = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceCoal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceCrystals = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -95,6 +97,8 @@
             this.dgvSurveyColumnResourceOil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourcePhlogiston = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourcePolytaride = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvSurveyColumnResourceViathol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvSurveyColumnResourceFlomentum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceMagmex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceMyrathane = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceWater = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -127,9 +131,6 @@
             this.cmsRightClickFreezeColumn = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.cmsRightClickHideRow = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuStrip1OptionsResetTableSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1OptionsShowHidenRows = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -167,39 +168,45 @@
             // menuStrip1FileImport
             // 
             this.menuStrip1FileImport.Name = "menuStrip1FileImport";
-            this.menuStrip1FileImport.Size = new System.Drawing.Size(110, 22);
+            this.menuStrip1FileImport.Size = new System.Drawing.Size(180, 22);
             this.menuStrip1FileImport.Text = "Import";
             this.menuStrip1FileImport.Click += new System.EventHandler(this.menuStrip1FileImport_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(107, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // menuStrip1FileExit
             // 
             this.menuStrip1FileExit.Name = "menuStrip1FileExit";
-            this.menuStrip1FileExit.Size = new System.Drawing.Size(110, 22);
+            this.menuStrip1FileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.menuStrip1FileExit.Size = new System.Drawing.Size(180, 22);
             this.menuStrip1FileExit.Text = "Exit";
             this.menuStrip1FileExit.Click += new System.EventHandler(this.menuStrip1FileExit_Click);
             // 
             // menuStrip1Options
             // 
             this.menuStrip1Options.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuStrip1OptionsSystemWide,
-            this.toolStripSeparator5,
-            this.menuStrip1OptionsShowHidenRows,
+            this.menuStrip1OptionsShowHiddenRows,
             this.menuStrip1OptionsResetTableSettings});
             this.menuStrip1Options.Name = "menuStrip1Options";
             this.menuStrip1Options.Size = new System.Drawing.Size(61, 20);
             this.menuStrip1Options.Text = "Options";
             // 
-            // menuStrip1OptionsSystemWide
+            // menuStrip1OptionsShowHiddenRows
             // 
-            this.menuStrip1OptionsSystemWide.Name = "menuStrip1OptionsSystemWide";
-            this.menuStrip1OptionsSystemWide.Size = new System.Drawing.Size(179, 22);
-            this.menuStrip1OptionsSystemWide.Text = "System Wide mode";
-            this.menuStrip1OptionsSystemWide.Click += new System.EventHandler(this.menuStrip1OptionsSystemWide_Click);
+            this.menuStrip1OptionsShowHiddenRows.Name = "menuStrip1OptionsShowHiddenRows";
+            this.menuStrip1OptionsShowHiddenRows.Size = new System.Drawing.Size(180, 22);
+            this.menuStrip1OptionsShowHiddenRows.Text = "Show Hidden Rows";
+            this.menuStrip1OptionsShowHiddenRows.Click += new System.EventHandler(this.menuStrip1OptionsShowHidenRows_Click);
+            // 
+            // menuStrip1OptionsResetTableSettings
+            // 
+            this.menuStrip1OptionsResetTableSettings.Name = "menuStrip1OptionsResetTableSettings";
+            this.menuStrip1OptionsResetTableSettings.Size = new System.Drawing.Size(180, 22);
+            this.menuStrip1OptionsResetTableSettings.Text = "Reset Table Settings";
+            this.menuStrip1OptionsResetTableSettings.Click += new System.EventHandler(this.menuStrip1OptionsResetTableSettings_Click);
             // 
             // menuStrip1Help
             // 
@@ -216,33 +223,34 @@
             // menuStrip1HelpGithub
             // 
             this.menuStrip1HelpGithub.Name = "menuStrip1HelpGithub";
-            this.menuStrip1HelpGithub.Size = new System.Drawing.Size(149, 22);
+            this.menuStrip1HelpGithub.Size = new System.Drawing.Size(180, 22);
             this.menuStrip1HelpGithub.Text = "GitHub Repo";
             this.menuStrip1HelpGithub.Click += new System.EventHandler(this.menuStrip1HelpGithub_Click);
             // 
             // menuStrip1HelpThread
             // 
             this.menuStrip1HelpThread.Name = "menuStrip1HelpThread";
-            this.menuStrip1HelpThread.Size = new System.Drawing.Size(149, 22);
+            this.menuStrip1HelpThread.Size = new System.Drawing.Size(180, 22);
             this.menuStrip1HelpThread.Text = "Forum Thread";
             this.menuStrip1HelpThread.Click += new System.EventHandler(this.menuStrip1HelpThread_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(146, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // menuStrip1HelpAbout
             // 
             this.menuStrip1HelpAbout.Name = "menuStrip1HelpAbout";
-            this.menuStrip1HelpAbout.Size = new System.Drawing.Size(149, 22);
+            this.menuStrip1HelpAbout.Size = new System.Drawing.Size(180, 22);
             this.menuStrip1HelpAbout.Text = "About";
             this.menuStrip1HelpAbout.Click += new System.EventHandler(this.menuStrip1HelpAbout_Click);
             // 
             // menuStrip1HelpHowToUse
             // 
             this.menuStrip1HelpHowToUse.Name = "menuStrip1HelpHowToUse";
-            this.menuStrip1HelpHowToUse.Size = new System.Drawing.Size(149, 22);
+            this.menuStrip1HelpHowToUse.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.menuStrip1HelpHowToUse.Size = new System.Drawing.Size(180, 22);
             this.menuStrip1HelpHowToUse.Text = "How To Use";
             this.menuStrip1HelpHowToUse.Click += new System.EventHandler(this.menuStrip1HelpHowToUse_Click);
             // 
@@ -539,6 +547,7 @@
             this.dgvSurveyColumnOrbit,
             this.dgvSurveyColumnBodyType,
             this.dgvSurveyColumnPopulationLimit,
+            this.dgvSurveyColumnResourceAdamantite,
             this.dgvSurveyColumnResourceBolite,
             this.dgvSurveyColumnResourceCoal,
             this.dgvSurveyColumnResourceCrystals,
@@ -559,6 +568,8 @@
             this.dgvSurveyColumnResourceOil,
             this.dgvSurveyColumnResourcePhlogiston,
             this.dgvSurveyColumnResourcePolytaride,
+            this.dgvSurveyColumnResourceViathol,
+            this.dgvSurveyColumnResourceFlomentum,
             this.dgvSurveyColumnResourceMagmex,
             this.dgvSurveyColumnResourceMyrathane,
             this.dgvSurveyColumnResourceWater,
@@ -601,6 +612,7 @@
             this.dgvSurvey.Size = new System.Drawing.Size(556, 403);
             this.dgvSurvey.TabIndex = 0;
             this.dgvSurvey.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_CellMouseDown);
+            this.dgvSurvey.SelectionChanged += new System.EventHandler(this.dgvSurvey_SelectionChanged);
             this.dgvSurvey.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dgv_SortCompare);
             this.dgvSurvey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgv_KeyDown);
             // 
@@ -609,6 +621,7 @@
             this.dgvSurveyColumnGalaxy.HeaderText = "Galaxy";
             this.dgvSurveyColumnGalaxy.Name = "dgvSurveyColumnGalaxy";
             this.dgvSurveyColumnGalaxy.ReadOnly = true;
+            this.dgvSurveyColumnGalaxy.Visible = false;
             // 
             // dgvSurveyColumnSector
             // 
@@ -657,6 +670,12 @@
             this.dgvSurveyColumnPopulationLimit.HeaderText = "Population Limit";
             this.dgvSurveyColumnPopulationLimit.Name = "dgvSurveyColumnPopulationLimit";
             this.dgvSurveyColumnPopulationLimit.ReadOnly = true;
+            // 
+            // dgvSurveyColumnResourceAdamantite
+            // 
+            this.dgvSurveyColumnResourceAdamantite.HeaderText = "Adamantite";
+            this.dgvSurveyColumnResourceAdamantite.Name = "dgvSurveyColumnResourceAdamantite";
+            this.dgvSurveyColumnResourceAdamantite.ReadOnly = true;
             // 
             // dgvSurveyColumnResourceBolite
             // 
@@ -777,6 +796,18 @@
             this.dgvSurveyColumnResourcePolytaride.HeaderText = "Polytaride";
             this.dgvSurveyColumnResourcePolytaride.Name = "dgvSurveyColumnResourcePolytaride";
             this.dgvSurveyColumnResourcePolytaride.ReadOnly = true;
+            // 
+            // dgvSurveyColumnResourceViathol
+            // 
+            this.dgvSurveyColumnResourceViathol.HeaderText = "Viathol";
+            this.dgvSurveyColumnResourceViathol.Name = "dgvSurveyColumnResourceViathol";
+            this.dgvSurveyColumnResourceViathol.ReadOnly = true;
+            // 
+            // dgvSurveyColumnResourceFlomentum
+            // 
+            this.dgvSurveyColumnResourceFlomentum.HeaderText = "Flomentum";
+            this.dgvSurveyColumnResourceFlomentum.Name = "dgvSurveyColumnResourceFlomentum";
+            this.dgvSurveyColumnResourceFlomentum.ReadOnly = true;
             // 
             // dgvSurveyColumnResourceMagmex
             // 
@@ -973,25 +1004,6 @@
             this.cmsRightClickHideRow.Text = "Hide Row";
             this.cmsRightClickHideRow.Click += new System.EventHandler(this.cmsRightClickHideRow_Click);
             // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(176, 6);
-            // 
-            // menuStrip1OptionsResetTableSettings
-            // 
-            this.menuStrip1OptionsResetTableSettings.Name = "menuStrip1OptionsResetTableSettings";
-            this.menuStrip1OptionsResetTableSettings.Size = new System.Drawing.Size(179, 22);
-            this.menuStrip1OptionsResetTableSettings.Text = "Reset Table Settings";
-            this.menuStrip1OptionsResetTableSettings.Click += new System.EventHandler(this.menuStrip1OptionsResetTableSettings_Click);
-            // 
-            // menuStrip1OptionsShowHidenRows
-            // 
-            this.menuStrip1OptionsShowHidenRows.Name = "menuStrip1OptionsShowHidenRows";
-            this.menuStrip1OptionsShowHidenRows.Size = new System.Drawing.Size(179, 22);
-            this.menuStrip1OptionsShowHidenRows.Text = "Show Hiden Rows";
-            this.menuStrip1OptionsShowHidenRows.Click += new System.EventHandler(this.menuStrip1OptionsShowHidenRows_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1056,7 +1068,6 @@
         private System.Windows.Forms.ToolStripMenuItem cmsRightClickCopy;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem cmsRightClickHideColumn;
-        private System.Windows.Forms.ToolStripMenuItem menuStrip1OptionsSystemWide;
         private System.Windows.Forms.RadioButton rabFilterWormhole;
         private System.Windows.Forms.NumericUpDown nudFilterWormhole;
         private System.Windows.Forms.RadioButton rabFilterRange;
@@ -1067,6 +1078,8 @@
         private System.Windows.Forms.CheckBox cbxOptionsSystemWide;
         private System.Windows.Forms.Label lblOptions;
         private System.Windows.Forms.ToolStripMenuItem cmsRightClickFreezeColumn;
+        private System.Windows.Forms.ToolStripMenuItem menuStrip1OptionsResetTableSettings;
+        private System.Windows.Forms.ToolStripMenuItem menuStrip1OptionsShowHiddenRows;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnGalaxy;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnSector;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnSystem;
@@ -1076,6 +1089,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnOrbit;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnBodyType;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnPopulationLimit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceAdamantite;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceBolite;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceCoal;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceCrystals;
@@ -1096,6 +1110,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceOil;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourcePhlogiston;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourcePolytaride;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceViathol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceFlomentum;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceMagmex;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceMyrathane;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceWater;
@@ -1120,9 +1136,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourcePlantFiber;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceSpices;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceVegetable;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripMenuItem menuStrip1OptionsResetTableSettings;
-        private System.Windows.Forms.ToolStripMenuItem menuStrip1OptionsShowHidenRows;
     }
 }
 
