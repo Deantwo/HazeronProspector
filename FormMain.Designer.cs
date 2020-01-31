@@ -168,20 +168,20 @@
             // menuStrip1FileImport
             // 
             this.menuStrip1FileImport.Name = "menuStrip1FileImport";
-            this.menuStrip1FileImport.Size = new System.Drawing.Size(180, 22);
+            this.menuStrip1FileImport.Size = new System.Drawing.Size(135, 22);
             this.menuStrip1FileImport.Text = "Import";
             this.menuStrip1FileImport.Click += new System.EventHandler(this.menuStrip1FileImport_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(132, 6);
             // 
             // menuStrip1FileExit
             // 
             this.menuStrip1FileExit.Name = "menuStrip1FileExit";
             this.menuStrip1FileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.menuStrip1FileExit.Size = new System.Drawing.Size(180, 22);
+            this.menuStrip1FileExit.Size = new System.Drawing.Size(135, 22);
             this.menuStrip1FileExit.Text = "Exit";
             this.menuStrip1FileExit.Click += new System.EventHandler(this.menuStrip1FileExit_Click);
             // 
@@ -197,14 +197,14 @@
             // menuStrip1OptionsShowHiddenRows
             // 
             this.menuStrip1OptionsShowHiddenRows.Name = "menuStrip1OptionsShowHiddenRows";
-            this.menuStrip1OptionsShowHiddenRows.Size = new System.Drawing.Size(180, 22);
+            this.menuStrip1OptionsShowHiddenRows.Size = new System.Drawing.Size(177, 22);
             this.menuStrip1OptionsShowHiddenRows.Text = "Show Hidden Rows";
             this.menuStrip1OptionsShowHiddenRows.Click += new System.EventHandler(this.menuStrip1OptionsShowHidenRows_Click);
             // 
             // menuStrip1OptionsResetTableSettings
             // 
             this.menuStrip1OptionsResetTableSettings.Name = "menuStrip1OptionsResetTableSettings";
-            this.menuStrip1OptionsResetTableSettings.Size = new System.Drawing.Size(180, 22);
+            this.menuStrip1OptionsResetTableSettings.Size = new System.Drawing.Size(177, 22);
             this.menuStrip1OptionsResetTableSettings.Text = "Reset Table Settings";
             this.menuStrip1OptionsResetTableSettings.Click += new System.EventHandler(this.menuStrip1OptionsResetTableSettings_Click);
             // 
@@ -223,26 +223,26 @@
             // menuStrip1HelpGithub
             // 
             this.menuStrip1HelpGithub.Name = "menuStrip1HelpGithub";
-            this.menuStrip1HelpGithub.Size = new System.Drawing.Size(180, 22);
+            this.menuStrip1HelpGithub.Size = new System.Drawing.Size(155, 22);
             this.menuStrip1HelpGithub.Text = "GitHub Repo";
             this.menuStrip1HelpGithub.Click += new System.EventHandler(this.menuStrip1HelpGithub_Click);
             // 
             // menuStrip1HelpThread
             // 
             this.menuStrip1HelpThread.Name = "menuStrip1HelpThread";
-            this.menuStrip1HelpThread.Size = new System.Drawing.Size(180, 22);
+            this.menuStrip1HelpThread.Size = new System.Drawing.Size(155, 22);
             this.menuStrip1HelpThread.Text = "Forum Thread";
             this.menuStrip1HelpThread.Click += new System.EventHandler(this.menuStrip1HelpThread_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(152, 6);
             // 
             // menuStrip1HelpAbout
             // 
             this.menuStrip1HelpAbout.Name = "menuStrip1HelpAbout";
-            this.menuStrip1HelpAbout.Size = new System.Drawing.Size(180, 22);
+            this.menuStrip1HelpAbout.Size = new System.Drawing.Size(155, 22);
             this.menuStrip1HelpAbout.Text = "About";
             this.menuStrip1HelpAbout.Click += new System.EventHandler(this.menuStrip1HelpAbout_Click);
             // 
@@ -250,7 +250,7 @@
             // 
             this.menuStrip1HelpHowToUse.Name = "menuStrip1HelpHowToUse";
             this.menuStrip1HelpHowToUse.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.menuStrip1HelpHowToUse.Size = new System.Drawing.Size(180, 22);
+            this.menuStrip1HelpHowToUse.Size = new System.Drawing.Size(155, 22);
             this.menuStrip1HelpHowToUse.Text = "How To Use";
             this.menuStrip1HelpHowToUse.Click += new System.EventHandler(this.menuStrip1HelpHowToUse_Click);
             // 
@@ -289,7 +289,7 @@
             this.btnSearch.Location = new System.Drawing.Point(3, 381);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(88, 21);
-            this.btnSearch.TabIndex = 2;
+            this.btnSearch.TabIndex = 60;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -303,7 +303,7 @@
             this.cobSelectionSystem.Location = new System.Drawing.Point(3, 135);
             this.cobSelectionSystem.Name = "cobSelectionSystem";
             this.cobSelectionSystem.Size = new System.Drawing.Size(88, 21);
-            this.cobSelectionSystem.TabIndex = 3;
+            this.cobSelectionSystem.TabIndex = 32;
             // 
             // rabSelectionDropdown
             // 
@@ -314,7 +314,7 @@
             this.rabSelectionDropdown.Location = new System.Drawing.Point(3, 85);
             this.rabSelectionDropdown.Name = "rabSelectionDropdown";
             this.rabSelectionDropdown.Size = new System.Drawing.Size(74, 17);
-            this.rabSelectionDropdown.TabIndex = 5;
+            this.rabSelectionDropdown.TabIndex = 30;
             this.rabSelectionDropdown.TabStop = true;
             this.rabSelectionDropdown.Text = "Dropdown";
             this.rabSelectionDropdown.UseVisualStyleBackColor = true;
@@ -329,7 +329,7 @@
             this.cobSelectionSector.Location = new System.Drawing.Point(3, 108);
             this.cobSelectionSector.Name = "cobSelectionSector";
             this.cobSelectionSector.Size = new System.Drawing.Size(88, 21);
-            this.cobSelectionSector.TabIndex = 6;
+            this.cobSelectionSector.TabIndex = 31;
             this.cobSelectionSector.SelectedIndexChanged += new System.EventHandler(this.cobSelectionSector_SelectedIndexChanged);
             // 
             // rabSelectionCoordinate
@@ -341,7 +341,7 @@
             this.rabSelectionCoordinate.Location = new System.Drawing.Point(3, 162);
             this.rabSelectionCoordinate.Name = "rabSelectionCoordinate";
             this.rabSelectionCoordinate.Size = new System.Drawing.Size(76, 17);
-            this.rabSelectionCoordinate.TabIndex = 7;
+            this.rabSelectionCoordinate.TabIndex = 34;
             this.rabSelectionCoordinate.TabStop = true;
             this.rabSelectionCoordinate.Text = "Coordinate";
             this.rabSelectionCoordinate.UseVisualStyleBackColor = true;
@@ -354,7 +354,7 @@
             this.tbxSelectionCoordinate.Location = new System.Drawing.Point(3, 185);
             this.tbxSelectionCoordinate.Name = "tbxSelectionCoordinate";
             this.tbxSelectionCoordinate.Size = new System.Drawing.Size(88, 20);
-            this.tbxSelectionCoordinate.TabIndex = 8;
+            this.tbxSelectionCoordinate.TabIndex = 35;
             this.tbxSelectionCoordinate.TextChanged += new System.EventHandler(this.tbxSelectionCoordinate_TextChanged);
             // 
             // splitContainer1
@@ -401,7 +401,7 @@
             this.cbxOptionsSystemWide.Location = new System.Drawing.Point(3, 358);
             this.cbxOptionsSystemWide.Name = "cbxOptionsSystemWide";
             this.cbxOptionsSystemWide.Size = new System.Drawing.Size(85, 17);
-            this.cbxOptionsSystemWide.TabIndex = 1;
+            this.cbxOptionsSystemWide.TabIndex = 50;
             this.cbxOptionsSystemWide.Text = "SystemWide";
             this.cbxOptionsSystemWide.UseVisualStyleBackColor = true;
             this.cbxOptionsSystemWide.Click += new System.EventHandler(this.cbxOptionsSystemWide_Click);
@@ -422,7 +422,7 @@
             this.rabFilterNone.Location = new System.Drawing.Point(3, 224);
             this.rabFilterNone.Name = "rabFilterNone";
             this.rabFilterNone.Size = new System.Drawing.Size(51, 17);
-            this.rabFilterNone.TabIndex = 15;
+            this.rabFilterNone.TabIndex = 40;
             this.rabFilterNone.TabStop = true;
             this.rabFilterNone.Text = "None";
             this.rabFilterNone.UseVisualStyleBackColor = true;
@@ -435,7 +435,7 @@
             this.rabFilterWormhole.Location = new System.Drawing.Point(3, 296);
             this.rabFilterWormhole.Name = "rabFilterWormhole";
             this.rabFilterWormhole.Size = new System.Drawing.Size(78, 17);
-            this.rabFilterWormhole.TabIndex = 14;
+            this.rabFilterWormhole.TabIndex = 43;
             this.rabFilterWormhole.TabStop = true;
             this.rabFilterWormhole.Text = "Wormholes";
             this.rabFilterWormhole.UseVisualStyleBackColor = true;
@@ -454,7 +454,7 @@
             0});
             this.nudFilterWormhole.Name = "nudFilterWormhole";
             this.nudFilterWormhole.Size = new System.Drawing.Size(88, 20);
-            this.nudFilterWormhole.TabIndex = 13;
+            this.nudFilterWormhole.TabIndex = 44;
             this.nudFilterWormhole.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // rabFilterRange
@@ -464,7 +464,7 @@
             this.rabFilterRange.Location = new System.Drawing.Point(3, 247);
             this.rabFilterRange.Name = "rabFilterRange";
             this.rabFilterRange.Size = new System.Drawing.Size(78, 17);
-            this.rabFilterRange.TabIndex = 1;
+            this.rabFilterRange.TabIndex = 41;
             this.rabFilterRange.TabStop = true;
             this.rabFilterRange.Text = "Range (pc)";
             this.rabFilterRange.UseVisualStyleBackColor = true;
@@ -497,7 +497,7 @@
             this.cobSelectionGalaxy.Location = new System.Drawing.Point(3, 45);
             this.cobSelectionGalaxy.Name = "cobSelectionGalaxy";
             this.cobSelectionGalaxy.Size = new System.Drawing.Size(88, 21);
-            this.cobSelectionGalaxy.TabIndex = 10;
+            this.cobSelectionGalaxy.TabIndex = 20;
             this.cobSelectionGalaxy.SelectedIndexChanged += new System.EventHandler(this.cobSelectionGalaxy_SelectedIndexChanged);
             // 
             // btnImport
@@ -505,7 +505,7 @@
             this.btnImport.Location = new System.Drawing.Point(3, 3);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(90, 23);
-            this.btnImport.TabIndex = 0;
+            this.btnImport.TabIndex = 10;
             this.btnImport.Text = "Import";
             this.btnImport.UseVisualStyleBackColor = true;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
@@ -527,7 +527,7 @@
             this.nudFilterRange.Location = new System.Drawing.Point(3, 270);
             this.nudFilterRange.Name = "nudFilterRange";
             this.nudFilterRange.Size = new System.Drawing.Size(88, 20);
-            this.nudFilterRange.TabIndex = 0;
+            this.nudFilterRange.TabIndex = 42;
             this.nudFilterRange.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // dgvSurvey
@@ -610,6 +610,7 @@
             this.dgvSurvey.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvSurvey.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSurvey.Size = new System.Drawing.Size(556, 403);
+            this.dgvSurvey.StandardTab = true;
             this.dgvSurvey.TabIndex = 0;
             this.dgvSurvey.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_CellMouseDown);
             this.dgvSurvey.SelectionChanged += new System.EventHandler(this.dgvSurvey_SelectionChanged);
