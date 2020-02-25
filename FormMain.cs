@@ -337,7 +337,7 @@ namespace HazeronProspector
         private void TableAddSystem(HSystem system)
         {
             dgvSurvey.Columns["dgvSurveyColumnZone"].Visible = _columnVisability["dgvSurveyColumnZone"] && !_optionSystemWide;
-            dgvSurvey.Columns["dgvSurveyColumnPopulationLimit"].Visible = _columnVisability["dgvSurveyColumnPopulationLimit"] && !_optionSystemWide;
+            dgvSurvey.Columns["dgvSurveyColumnDiameter"].Visible = _columnVisability["dgvSurveyColumnDiameter"] && !_optionSystemWide;
             dgvSurvey.Columns["dgvSurveyColumnBodyType"].Visible = _columnVisability["dgvSurveyColumnBodyType"] && !_optionSystemWide;
 
             if (_optionSystemWide)
@@ -347,7 +347,7 @@ namespace HazeronProspector
                 row.Cells["dgvSurveyColumnGalaxy"].Value = system.HostSector.HostGalaxy;
                 row.Cells["dgvSurveyColumnSector"].Value = system.HostSector;
                 row.Cells["dgvSurveyColumnSystem"].Value = system;
-                row.Cells["dgvSurveyColumnPlanet"].Value = system.CelestialBodies.Values.Count(x =>  x.Type != CelestialBodyType.Star && x.Type != CelestialBodyType.Ring) + " planets (" + system.HabitbleCount() + " habitable)";
+                row.Cells["dgvSurveyColumnWorld"].Value = system.CelestialBodies.Values.Count(x =>  x.Type != CelestialBodyType.Star && x.Type != CelestialBodyType.Ring) + " worlds (" + system.HabitbleCount() + " habitable)";
                 row.Cells["dgvSurveyColumnOrbit"].Value = system.CelestialBodies.Values.Count(x => x.Type == CelestialBodyType.Star) + " Stars";
                 row.Cells["dgvSurveyColumnCoordinates"].Value = system.Coord;
                 foreach (Resource resource in system.BestResources().Values)
@@ -366,7 +366,7 @@ namespace HazeronProspector
                         row.Cells["dgvSurveyColumnGalaxy"].Value = system.HostSector.HostGalaxy;
                         row.Cells["dgvSurveyColumnSector"].Value = system.HostSector;
                         row.Cells["dgvSurveyColumnSystem"].Value = system;
-                        row.Cells["dgvSurveyColumnPlanet"].Value = planet;
+                        row.Cells["dgvSurveyColumnWorld"].Value = planet;
                         row.Cells["dgvSurveyColumnZone"].Value = zone;
                         switch (planet.Orbit)
                         {
@@ -407,18 +407,21 @@ namespace HazeronProspector
                             case CelestialBodyType.GasGiant:
                                 row.Cells["dgvSurveyColumnBodyType"].Value = "Gas Giant";
                                 break;
-                            case CelestialBodyType.LargeMoon:
-                                row.Cells["dgvSurveyColumnBodyType"].Value = "Large Moon";
+                            case CelestialBodyType.Titan:
+                                row.Cells["dgvSurveyColumnBodyType"].Value = "Titan";
                                 break;
                             case CelestialBodyType.Ring:
                                 row.Cells["dgvSurveyColumnBodyType"].Value = "Ring";
+                                break;
+                            case CelestialBodyType.Planetoid:
+                                row.Cells["dgvSurveyColumnBodyType"].Value = "Planetoid";
                                 break;
                             case CelestialBodyType.RingworldArc:
                                 row.Cells["dgvSurveyColumnBodyType"].Value = "Ringworld Arc";
                                 break;
                         }
-                        if (planet.PopulationLimit > 0)
-                            row.Cells["dgvSurveyColumnPopulationLimit"].Value = planet.PopulationLimit;
+                        if (planet.Diameter > 0 && planet.Type != CelestialBodyType.Ring)
+                            row.Cells["dgvSurveyColumnDiameter"].Value = planet.Diameter;
                         foreach (Resource resource in zone.Resources.Values)
                         {
                             TableAddResourceRow(row, resource);
@@ -484,8 +487,9 @@ namespace HazeronProspector
             }
             else
             {
-                // Try to sort based on the cells in the current column as srtings.
-                e.SortResult = String.Compare((e.CellValue1 ?? "").ToString(), (e.CellValue2 ?? "").ToString());
+                // Try to sort based on the cells in the current column as padded srtings.
+                string value1 = (e.CellValue1 ?? "").ToString(), value2 = (e.CellValue2 ?? "").ToString();
+                e.SortResult = CompareNumberStrings(value1, value2);
             }
 
             // If the cells are equal, sort based on the ID column.
@@ -504,8 +508,8 @@ namespace HazeronProspector
             if (e.SortResult == 0)
             {
                 e.SortResult = String.Compare(
-                    dgv.Rows[e.RowIndex1].Cells["dgvSurveyColumnPlanet"].Value.ToString(),
-                    dgv.Rows[e.RowIndex2].Cells["dgvSurveyColumnPlanet"].Value.ToString());
+                    dgv.Rows[e.RowIndex1].Cells["dgvSurveyColumnWorld"].Value.ToString(),
+                    dgv.Rows[e.RowIndex2].Cells["dgvSurveyColumnWorld"].Value.ToString());
             }
             if (e.SortResult == 0
              && dgv.Rows[e.RowIndex1].Cells["dgvSurveyColumnZone"].Value != null

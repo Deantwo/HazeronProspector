@@ -40,7 +40,7 @@ namespace HazeronProspector
 
         public bool ContainSurvey
         {
-            get { return _systems.Values.Any(x => x.EOD == "Surveyed"); }
+            get { return _systems.Values.Any(x => x.Surveyed); }
         }
 
         public Sector(string id, string name, string x, string y, string z)

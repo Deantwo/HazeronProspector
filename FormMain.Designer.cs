@@ -70,12 +70,12 @@
             this.dgvSurveyColumnGalaxy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnSector = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnSystem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvSurveyColumnPlanet = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvSurveyColumnWorld = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnZone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnCoordinates = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnOrbit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnBodyType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvSurveyColumnPopulationLimit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvSurveyColumnDiameter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceAdamantite = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceBolite = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceCoal = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -541,12 +541,12 @@
             this.dgvSurveyColumnGalaxy,
             this.dgvSurveyColumnSector,
             this.dgvSurveyColumnSystem,
-            this.dgvSurveyColumnPlanet,
+            this.dgvSurveyColumnWorld,
             this.dgvSurveyColumnZone,
             this.dgvSurveyColumnCoordinates,
             this.dgvSurveyColumnOrbit,
             this.dgvSurveyColumnBodyType,
-            this.dgvSurveyColumnPopulationLimit,
+            this.dgvSurveyColumnDiameter,
             this.dgvSurveyColumnResourceAdamantite,
             this.dgvSurveyColumnResourceBolite,
             this.dgvSurveyColumnResourceCoal,
@@ -636,11 +636,11 @@
             this.dgvSurveyColumnSystem.Name = "dgvSurveyColumnSystem";
             this.dgvSurveyColumnSystem.ReadOnly = true;
             // 
-            // dgvSurveyColumnPlanet
+            // dgvSurveyColumnWorld
             // 
-            this.dgvSurveyColumnPlanet.HeaderText = "Planet";
-            this.dgvSurveyColumnPlanet.Name = "dgvSurveyColumnPlanet";
-            this.dgvSurveyColumnPlanet.ReadOnly = true;
+            this.dgvSurveyColumnWorld.HeaderText = "World";
+            this.dgvSurveyColumnWorld.Name = "dgvSurveyColumnWorld";
+            this.dgvSurveyColumnWorld.ReadOnly = true;
             // 
             // dgvSurveyColumnZone
             // 
@@ -666,11 +666,11 @@
             this.dgvSurveyColumnBodyType.Name = "dgvSurveyColumnBodyType";
             this.dgvSurveyColumnBodyType.ReadOnly = true;
             // 
-            // dgvSurveyColumnPopulationLimit
+            // dgvSurveyColumnDiameter
             // 
-            this.dgvSurveyColumnPopulationLimit.HeaderText = "Population Limit";
-            this.dgvSurveyColumnPopulationLimit.Name = "dgvSurveyColumnPopulationLimit";
-            this.dgvSurveyColumnPopulationLimit.ReadOnly = true;
+            this.dgvSurveyColumnDiameter.HeaderText = "Diameter";
+            this.dgvSurveyColumnDiameter.Name = "dgvSurveyColumnDiameter";
+            this.dgvSurveyColumnDiameter.ReadOnly = true;
             // 
             // dgvSurveyColumnResourceAdamantite
             // 
@@ -1084,12 +1084,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnGalaxy;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnSector;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnSystem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnPlanet;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnWorld;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnZone;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnCoordinates;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnOrbit;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnBodyType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnPopulationLimit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnDiameter;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceAdamantite;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceBolite;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceCoal;

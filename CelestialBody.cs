@@ -14,8 +14,9 @@ namespace HazeronProspector
         Planet,
         Moon,
         GasGiant,
-        LargeMoon,
+        Titan,
         Ring,
+        Planetoid,
         RingworldArc
     }
 
@@ -69,10 +70,10 @@ namespace HazeronProspector
             get { return _resourceZones; }
         }
 
-        protected int _populationLimit;
-        public int PopulationLimit
+        protected int _diameter;
+        public int Diameter
         {
-            get { return _populationLimit; }
+            get { return _diameter; }
         }
 
         public bool IsHabitable
@@ -81,41 +82,36 @@ namespace HazeronProspector
             {
                 return _orbit == CelestialBodyOrbit.Habitable
                 && (_type == CelestialBodyType.Planet
-                 || _type == CelestialBodyType.LargeMoon
+                 || _type == CelestialBodyType.Titan
                  || _type == CelestialBodyType.RingworldArc
                     );
             }
         }
 
         public CelestialBody(string id, string name, string type)
+            : this(id, name, type, "n/a", "n/a")
         {
-            _id = id;
-            _name = name;
-            _resourceZones = new Zone[1];
-            Initialize(type, "n/a", "n/a");
         }
         public CelestialBody(string id, string name, string type, string orbit, string size)
+            : this(id, name, type, orbit, size, new Zone[1])
         {
-            _id = id;
-            _name = name;
-            _resourceZones = new Zone[1];
-            Initialize(type, orbit, size);
-        }
-        public CelestialBody(string id, string name, string type, string orbit, string size, int numZones)
-        {
-            _id = id;
-            _name = name;
-            _resourceZones = new Zone[numZones];
-            Initialize(type, orbit, size);
         }
         public CelestialBody(string id, string name, string type, string orbit, string size, string numZones)
+            : this(id, name, type, orbit, size, Convert.ToInt32(numZones))
+        {
+        }
+        public CelestialBody(string id, string name, string type, string orbit, string size, int numZones)
+            : this(id, name, type, orbit, size, new Zone[numZones])
+        {
+        }
+        public CelestialBody(string id, string name, string type, string orbit, string size, Zone[] zones)
         {
             _id = id;
             _name = name;
-            _resourceZones = new Zone[Convert.ToInt32(numZones)];
+            _resourceZones = zones;
             Initialize(type, orbit, size);
         }
-        
+
         public void Initialize(string type, string orbit, string size)
         {
             for (int i = 0; i < _resourceZones.Length; i++)
@@ -145,10 +141,15 @@ namespace HazeronProspector
                     _type = CelestialBodyType.GasGiant;
                     break;
                 case "Large Moon":
-                    _type = CelestialBodyType.LargeMoon;
+                case "Titan":
+                    _type = CelestialBodyType.Titan;
                     break;
                 case "Ring":
                     _type = CelestialBodyType.Ring;
+                    break;
+                case "Asteroid": // Minor backward compatibility.
+                case "Planetoid":
+                    _type = CelestialBodyType.Planetoid;
                     break;
                 case "Ringworld Arc 1":
                 case "Ringworld Arc 2":
@@ -170,10 +171,11 @@ namespace HazeronProspector
                 case "Ringworld Arc 18":
                 case "Ringworld Arc 19":
                 case "Ringworld Arc 20":
+                case "Ringworld Arc 21":
                     _type = CelestialBodyType.RingworldArc;
                     break;
                 default:
-                    throw new Exception("Unknown type.");
+                    throw new Exception($"Unknown type: '{type}'");
             }
 
             switch (orbit)
@@ -197,16 +199,19 @@ namespace HazeronProspector
                     _orbit = CelestialBodyOrbit.Frigid;
                     break;
                 default:
-                    throw new Exception("Unknown orbit.");
+                    throw new Exception($"Unknown orbit: '{orbit}'");
             }
 
-            // Planet size to population limit
+            // Planet size.
             if (_type == CelestialBodyType.RingworldArc)
-                _populationLimit = 1000;
-            else if (_type == CelestialBodyType.Planet || _type == CelestialBodyType.Moon || _type == CelestialBodyType.LargeMoon)
+                _diameter = 36135; // 229,814 x 17,850m in spherical diameter.
+            else
             {
-                _populationLimit = Convert.ToInt32(size.Remove(size.LastIndexOf(' ') - 1));
-                _populationLimit = Convert.ToInt32(100 * Math.Floor((float)_populationLimit / 1800));
+                int pos = size.IndexOf("m ");
+                if (pos >= 0)
+                    size = size.Remove(pos);
+                size = size.Replace(".", "").Replace(",", "");
+                int.TryParse(size, out _diameter);
             }
         }
 

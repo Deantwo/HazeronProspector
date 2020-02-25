@@ -53,7 +53,7 @@ namespace HazeronProspector
                     foreach (XmlNode systemNode in systemNodeList)
                     {
                         HSystem system = new HSystem(systemNode.Attributes["systemId"].Value, systemNode.Attributes["name"].Value, systemNode.Attributes["x"].Value, systemNode.Attributes["y"].Value, systemNode.Attributes["z"].Value, systemNode.Attributes["eod"].Value);
-                        if (system.EOD == "Surveyed") // This if statement is redundent because of the XPath search.
+                        if (system.Surveyed) // This if statement is redundent because of the XPath search.
                         {
                             sector.AddSystem(system);
                             systemList.Add(system.ID, system);

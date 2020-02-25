@@ -90,33 +90,18 @@ namespace HazeronProspector
             get { return _abundance; }
         }
 
-        public int TechLevel
-        {
-            get { return 1 + (_quality / 8); }
-        }
-
         public System.Drawing.Color TechLevelColor
         {
             get
             {
-                if (_abundance == 0
-                 || (Type == ResourceType.Cryozine && TechLevel < 4)
-                 || (Type == ResourceType.Phlogiston && TechLevel < 5)
-                 || (Type == ResourceType.Ioplasma && TechLevel < 7)
-                 || (Type == ResourceType.Magmex && TechLevel < 10)
-                 || (Type == ResourceType.Myrathane && TechLevel < 13)
-                 || (Type == ResourceType.Polytaride && TechLevel < 16)
-                 || (Type == ResourceType.Vulcanite && TechLevel < 19)
-                 || (Type == ResourceType.AntifluxParticles && TechLevel < 24)
-                 || (Type == ResourceType.Bolite && TechLevel < 24)
-                 || (Type == ResourceType.BorexinoPrecipitate && TechLevel < 30)
-                   )
+                if (_abundance == 0)
                     return System.Drawing.Color.Gray;
-                if (TechLevel < 14)
+
+                if (_quality < 104)
                     return System.Drawing.Color.Red;
-                else if (TechLevel < 24)
+                else if (_quality < 184)
                     return System.Drawing.Color.Orange;
-                else if (TechLevel < 32)
+                else if (_quality < 248)
                     return System.Drawing.Color.Green;
                 else
                     return System.Drawing.Color.Blue;
@@ -292,6 +277,8 @@ namespace HazeronProspector
                 case "Type M Preons":
                     _type = ResourceType.Preons;
                     break;
+                default:
+                    throw new Exception($"Unknown resource: '{_name}'");
             }
         }
 

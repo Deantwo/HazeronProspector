@@ -43,6 +43,18 @@ namespace HazeronProspector
         {
             get { return _eod; }
         }
+        public bool Unexplored
+        {
+            get { return EOD == "Unexplored"; }
+        }
+        public bool Explored
+        {
+            get { return EOD == "Explored"; }
+        }
+        public bool Surveyed
+        {
+            get { return EOD == "Surveyed"; }
+        }
 
         protected bool _initialized = false;
         public bool Initialized
