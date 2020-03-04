@@ -126,10 +126,10 @@ namespace HazeronProspector
                     _type = CelestialBodyType.Star;
                     break;
                 case "Photon Sphere":
-                    _type = CelestialBodyType.NeutronStar;
+                    _type = CelestialBodyType.BlackHole;
                     break;
                 case "Neutron Sphere":
-                    _type = CelestialBodyType.BlackHole;
+                    _type = CelestialBodyType.NeutronStar;
                     break;
                 case "Planet":
                     _type = CelestialBodyType.Planet;
