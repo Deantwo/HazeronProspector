@@ -57,8 +57,85 @@ namespace HazeronProspector
         Preons
     }
 
+    public enum ResourceCategory
+    {
+        ERROR,
+        Geosphere,
+        Hydrophere,
+        Biosphere,
+        Atmosphere,
+        Photophere
+    }
+
     public class Resource
     {
+        public static ResourceCategory GetCategory(ResourceType type)
+        {
+            switch (type)
+            {
+                case ResourceType.AnimalCarcass:
+                case ResourceType.Beans:
+                case ResourceType.Cheese:
+                case ResourceType.Eggs:
+                case ResourceType.Fertilizer:
+                case ResourceType.Fish:
+                case ResourceType.Fruit:
+                case ResourceType.Grain:
+                case ResourceType.Grapes:
+                case ResourceType.Herbs:
+                case ResourceType.Hops:
+                case ResourceType.Hay:
+                case ResourceType.Log:
+                case ResourceType.Milk:
+                case ResourceType.Nuts:
+                case ResourceType.PlantFiber:
+                case ResourceType.Spices:
+                case ResourceType.Vegetable:
+                    return ResourceCategory.Biosphere;
+                case ResourceType.Adamantite:
+                case ResourceType.Bolite:
+                case ResourceType.Coal:
+                case ResourceType.Crystals:
+                case ResourceType.Eludium:
+                case ResourceType.Gems:
+                case ResourceType.Ice:
+                case ResourceType.Lumenite:
+                case ResourceType.Minerals:
+                case ResourceType.Ore:
+                case ResourceType.Radioactives:
+                case ResourceType.Stone:
+                case ResourceType.Vulcanite:
+                    return ResourceCategory.Geosphere;
+                case ResourceType.NaturalGas:
+                case ResourceType.Oil:
+                case ResourceType.Phlogiston:
+                case ResourceType.Polytaride:
+                case ResourceType.Viathol:
+                    return ResourceCategory.Geosphere;
+                case ResourceType.Air:
+                case ResourceType.Cryozine:
+                case ResourceType.Hydrogen:
+                case ResourceType.Ioplasma:
+                case ResourceType.AntifluxParticles:
+                case ResourceType.BorexinoPrecipitate:
+                    return ResourceCategory.Atmosphere;
+                case ResourceType.Flomentum:
+                case ResourceType.Magmex:
+                case ResourceType.Myrathane:
+                case ResourceType.Water:
+                    return ResourceCategory.Hydrophere;
+                case ResourceType.Preons:
+                    return ResourceCategory.Photophere;
+                default:
+                    throw new Exception($"Unknown resource type: '{type}'");
+            }
+        }
+
+        public static bool IsAcrossZones(ResourceType type)
+        {
+            return GetCategory(type) == ResourceCategory.Hydrophere || GetCategory(type) == ResourceCategory.Atmosphere;
+        }
+
         protected Zone _hostZone;
         public Zone HostZone
         {
@@ -107,6 +184,10 @@ namespace HazeronProspector
                     return System.Drawing.Color.Blue;
             }
         }
+
+        public ResourceCategory Category => GetCategory(_type);
+
+        public bool AcrossZones => IsAcrossZones(_type);
 
         public Resource(string name, byte quality, byte abundance)
         {

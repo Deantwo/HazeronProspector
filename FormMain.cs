@@ -438,15 +438,7 @@ namespace HazeronProspector
             cell.Style.ForeColor = resource.TechLevelColor;
             cell.Style.SelectionForeColor = resource.TechLevelColor;
             if (resource.HostZone.HostCelestialBody.ResourceZones.Length == 1
-             || (resource.HostZone.HostCelestialBody.ResourceZones.Length > 1
-              && (resource.Type == ResourceType.Air
-               || resource.Type == ResourceType.Hydrogen
-               || resource.Type == ResourceType.Cryozine
-               || resource.Type == ResourceType.Ioplasma
-               || resource.Type == ResourceType.Water
-               || resource.Type == ResourceType.Myrathane
-               || resource.Type == ResourceType.Magmex
-                )))
+             || (resource.HostZone.HostCelestialBody.ResourceZones.Length > 1 && resource.AcrossZones))
                 cell.ToolTipText = resource.HostZone.HostCelestialBody.Name;
             else
                 cell.ToolTipText = resource.HostZone.HostCelestialBody.Name + ", " + resource.HostZone.Name;
