@@ -1,7 +1,7 @@
 HazeronProspector
 ==============
 
-System survey XML search tool for [Shores of Hazeron](http://hazeron.com/).
+System survey XML search tool for [Shores of Hazeron](https://www.hazeron.com/).
 
 Introduction
 ==============
@@ -62,4 +62,4 @@ Links
 ==============
 
 - [GitHub](https://github.com/Deantwo/HazeronProspector)
-- [Hazeron Forum Thread](http://hazeron.com/mybb/showthread.php?tid=31)
+- [Hazeron Forum Thread](https://hazeron.com/mybb/showthread.php?tid=31)
