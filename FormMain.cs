@@ -70,6 +70,14 @@ namespace HazeronProspector
             _hStarMap = new HazeronStarMapReader(openFileDialog1.FileName);
             _hStarMap.ReadSectorsAndSystems(ref _galaxies, ref _sectors, ref _systems);
 
+            if (_galaxies.Count == 0)
+            {
+                MessageBox.Show(this,
+                    "The starmap XML export file does not contain any surveyed solar systems.",
+                    "Starmap XML Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             cobSelectionGalaxy.Enabled = true;
             rabSelectionDropdown.Enabled = true;
             rabSelectionCoordinate.Enabled = true;
