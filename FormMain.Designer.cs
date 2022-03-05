@@ -69,6 +69,14 @@
             this.lblSelection = new System.Windows.Forms.Label();
             this.nudFilterRange = new System.Windows.Forms.NumericUpDown();
             this.dgvSurvey = new System.Windows.Forms.DataGridView();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.cmsRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsRightClickCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.cmsRightClickHideColumn = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsRightClickFreezeColumn = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.cmsRightClickHideRow = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvSurveyColumnGalaxy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnSector = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnSystem = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,6 +92,7 @@
             this.dgvSurveyColumnResourceCrystals = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceEludium = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceGems = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvSurveyColumnResourceGoldOre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceIce = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceLumenite = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceMinerals = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -125,14 +134,6 @@
             this.dgvSurveyColumnResourcePlantFiber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceSpices = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceVegetable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.cmsRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cmsRightClickCopy = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.cmsRightClickHideColumn = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsRightClickFreezeColumn = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.cmsRightClickHideRow = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -571,6 +572,7 @@
             this.dgvSurveyColumnResourceCrystals,
             this.dgvSurveyColumnResourceEludium,
             this.dgvSurveyColumnResourceGems,
+            this.dgvSurveyColumnResourceGoldOre,
             this.dgvSurveyColumnResourceIce,
             this.dgvSurveyColumnResourceLumenite,
             this.dgvSurveyColumnResourceMinerals,
@@ -634,6 +636,57 @@
             this.dgvSurvey.SelectionChanged += new System.EventHandler(this.dgvSurvey_SelectionChanged);
             this.dgvSurvey.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dgv_SortCompare);
             this.dgvSurvey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgv_KeyDown);
+            // 
+            // cmsRightClick
+            // 
+            this.cmsRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsRightClickCopy,
+            this.toolStripSeparator3,
+            this.cmsRightClickHideColumn,
+            this.cmsRightClickFreezeColumn,
+            this.toolStripSeparator4,
+            this.cmsRightClickHideRow});
+            this.cmsRightClick.Name = "cmsRightClick";
+            this.cmsRightClick.Size = new System.Drawing.Size(154, 104);
+            this.cmsRightClick.Opening += new System.ComponentModel.CancelEventHandler(this.cmsRightClick_Opening);
+            // 
+            // cmsRightClickCopy
+            // 
+            this.cmsRightClickCopy.Name = "cmsRightClickCopy";
+            this.cmsRightClickCopy.Size = new System.Drawing.Size(153, 22);
+            this.cmsRightClickCopy.Text = "Copy";
+            this.cmsRightClickCopy.Click += new System.EventHandler(this.cmsRightClickCopy_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(150, 6);
+            // 
+            // cmsRightClickHideColumn
+            // 
+            this.cmsRightClickHideColumn.Name = "cmsRightClickHideColumn";
+            this.cmsRightClickHideColumn.Size = new System.Drawing.Size(153, 22);
+            this.cmsRightClickHideColumn.Text = "Hide Column";
+            this.cmsRightClickHideColumn.Click += new System.EventHandler(this.cmsRightClickHideColumn_Click);
+            // 
+            // cmsRightClickFreezeColumn
+            // 
+            this.cmsRightClickFreezeColumn.Name = "cmsRightClickFreezeColumn";
+            this.cmsRightClickFreezeColumn.Size = new System.Drawing.Size(153, 22);
+            this.cmsRightClickFreezeColumn.Text = "Freeze Column";
+            this.cmsRightClickFreezeColumn.Click += new System.EventHandler(this.cmsRightClickFreezeColumn_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(150, 6);
+            // 
+            // cmsRightClickHideRow
+            // 
+            this.cmsRightClickHideRow.Name = "cmsRightClickHideRow";
+            this.cmsRightClickHideRow.Size = new System.Drawing.Size(153, 22);
+            this.cmsRightClickHideRow.Text = "Hide Row";
+            this.cmsRightClickHideRow.Click += new System.EventHandler(this.cmsRightClickHideRow_Click);
             // 
             // dgvSurveyColumnGalaxy
             // 
@@ -725,6 +778,12 @@
             this.dgvSurveyColumnResourceGems.HeaderText = "Gems";
             this.dgvSurveyColumnResourceGems.Name = "dgvSurveyColumnResourceGems";
             this.dgvSurveyColumnResourceGems.ReadOnly = true;
+            // 
+            // dgvSurveyColumnResourceGoldOre
+            // 
+            this.dgvSurveyColumnResourceGoldOre.HeaderText = "Gold Ore";
+            this.dgvSurveyColumnResourceGoldOre.Name = "dgvSurveyColumnResourceGoldOre";
+            this.dgvSurveyColumnResourceGoldOre.ReadOnly = true;
             // 
             // dgvSurveyColumnResourceIce
             // 
@@ -972,57 +1031,6 @@
             this.dgvSurveyColumnResourceVegetable.Name = "dgvSurveyColumnResourceVegetable";
             this.dgvSurveyColumnResourceVegetable.ReadOnly = true;
             // 
-            // cmsRightClick
-            // 
-            this.cmsRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cmsRightClickCopy,
-            this.toolStripSeparator3,
-            this.cmsRightClickHideColumn,
-            this.cmsRightClickFreezeColumn,
-            this.toolStripSeparator4,
-            this.cmsRightClickHideRow});
-            this.cmsRightClick.Name = "cmsRightClick";
-            this.cmsRightClick.Size = new System.Drawing.Size(154, 104);
-            this.cmsRightClick.Opening += new System.ComponentModel.CancelEventHandler(this.cmsRightClick_Opening);
-            // 
-            // cmsRightClickCopy
-            // 
-            this.cmsRightClickCopy.Name = "cmsRightClickCopy";
-            this.cmsRightClickCopy.Size = new System.Drawing.Size(153, 22);
-            this.cmsRightClickCopy.Text = "Copy";
-            this.cmsRightClickCopy.Click += new System.EventHandler(this.cmsRightClickCopy_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(150, 6);
-            // 
-            // cmsRightClickHideColumn
-            // 
-            this.cmsRightClickHideColumn.Name = "cmsRightClickHideColumn";
-            this.cmsRightClickHideColumn.Size = new System.Drawing.Size(153, 22);
-            this.cmsRightClickHideColumn.Text = "Hide Column";
-            this.cmsRightClickHideColumn.Click += new System.EventHandler(this.cmsRightClickHideColumn_Click);
-            // 
-            // cmsRightClickFreezeColumn
-            // 
-            this.cmsRightClickFreezeColumn.Name = "cmsRightClickFreezeColumn";
-            this.cmsRightClickFreezeColumn.Size = new System.Drawing.Size(153, 22);
-            this.cmsRightClickFreezeColumn.Text = "Freeze Column";
-            this.cmsRightClickFreezeColumn.Click += new System.EventHandler(this.cmsRightClickFreezeColumn_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(150, 6);
-            // 
-            // cmsRightClickHideRow
-            // 
-            this.cmsRightClickHideRow.Name = "cmsRightClickHideRow";
-            this.cmsRightClickHideRow.Size = new System.Drawing.Size(153, 22);
-            this.cmsRightClickHideRow.Text = "Hide Row";
-            this.cmsRightClickHideRow.Click += new System.EventHandler(this.cmsRightClickHideRow_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1116,6 +1124,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceCrystals;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceEludium;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceGems;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceGoldOre;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceIce;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceLumenite;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceMinerals;
