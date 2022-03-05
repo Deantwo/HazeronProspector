@@ -44,6 +44,8 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1HelpHowToUse = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1Debug = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1DebugSystemOptimizer = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -148,7 +150,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuStrip1File,
             this.menuStrip1Options,
-            this.menuStrip1Help});
+            this.menuStrip1Help,
+            this.menuStrip1Debug});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(662, 24);
@@ -253,6 +256,21 @@
             this.menuStrip1HelpHowToUse.Size = new System.Drawing.Size(155, 22);
             this.menuStrip1HelpHowToUse.Text = "How To Use";
             this.menuStrip1HelpHowToUse.Click += new System.EventHandler(this.menuStrip1HelpHowToUse_Click);
+            // 
+            // menuStrip1Debug
+            // 
+            this.menuStrip1Debug.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStrip1DebugSystemOptimizer});
+            this.menuStrip1Debug.Name = "menuStrip1Debug";
+            this.menuStrip1Debug.Size = new System.Drawing.Size(56, 20);
+            this.menuStrip1Debug.Text = "DEBUG";
+            this.menuStrip1Debug.Visible = false;
+            // 
+            // menuStrip1DebugSystemOptimizer
+            // 
+            this.menuStrip1DebugSystemOptimizer.Name = "menuStrip1DebugSystemOptimizer";
+            this.menuStrip1DebugSystemOptimizer.Size = new System.Drawing.Size(164, 22);
+            this.menuStrip1DebugSystemOptimizer.Text = "SystemOptimizer";
             // 
             // statusStrip1
             // 
@@ -1081,6 +1099,8 @@
         private System.Windows.Forms.ToolStripMenuItem cmsRightClickFreezeColumn;
         private System.Windows.Forms.ToolStripMenuItem menuStrip1OptionsResetTableSettings;
         private System.Windows.Forms.ToolStripMenuItem menuStrip1OptionsShowHiddenRows;
+        private System.Windows.Forms.ToolStripMenuItem menuStrip1Debug;
+        private System.Windows.Forms.ToolStripMenuItem menuStrip1DebugSystemOptimizer;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnGalaxy;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnSector;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnSystem;

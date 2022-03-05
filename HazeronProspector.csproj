@@ -54,6 +54,12 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSystemOptimizer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSystemOptimizer.Designer.cs">
+      <DependentUpon>FormSystemOptimizer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Galaxy.cs" />
     <Compile Include="Hazeron.cs" />
     <Compile Include="HazeronStarMapReader.cs" />
