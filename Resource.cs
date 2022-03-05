@@ -32,6 +32,7 @@ namespace HazeronProspector
         Crystals,
         Eludium,
         Gems,
+        GoldOre,
         Ice,
         Lumenite,
         Minerals,
@@ -98,6 +99,7 @@ namespace HazeronProspector
                 case ResourceType.Crystals:
                 case ResourceType.Eludium:
                 case ResourceType.Gems:
+                case ResourceType.GoldOre:
                 case ResourceType.Ice:
                 case ResourceType.Lumenite:
                 case ResourceType.Minerals:
