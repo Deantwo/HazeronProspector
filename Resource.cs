@@ -285,6 +285,9 @@ namespace HazeronProspector
                 case "Gems":
                     _type = ResourceType.Gems;
                     break;
+                case "Gold Ore":
+                    _type = ResourceType.GoldOre;
+                    break;
                 case "Ice":
                     _type = ResourceType.Ice;
                     break;
