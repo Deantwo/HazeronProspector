@@ -67,14 +67,6 @@
             this.lblSelection = new System.Windows.Forms.Label();
             this.nudFilterRange = new System.Windows.Forms.NumericUpDown();
             this.dgvSurvey = new System.Windows.Forms.DataGridView();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.cmsRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cmsRightClickCopy = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.cmsRightClickHideColumn = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsRightClickFreezeColumn = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.cmsRightClickHideRow = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvSurveyColumnGalaxy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnSector = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnSystem = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -132,6 +124,15 @@
             this.dgvSurveyColumnResourcePlantFiber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceSpices = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceVegetable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.cmsRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsRightClickCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.cmsRightClickHideColumn = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsRightClickFreezeColumn = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.cmsRightClickHideRow = new System.Windows.Forms.ToolStripMenuItem();
+            this.tESTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -149,7 +150,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuStrip1File,
             this.menuStrip1Options,
-            this.menuStrip1Help});
+            this.menuStrip1Help,
+            this.tESTToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(662, 24);
@@ -198,14 +200,14 @@
             // menuStrip1OptionsShowHiddenRows
             // 
             this.menuStrip1OptionsShowHiddenRows.Name = "menuStrip1OptionsShowHiddenRows";
-            this.menuStrip1OptionsShowHiddenRows.Size = new System.Drawing.Size(177, 22);
+            this.menuStrip1OptionsShowHiddenRows.Size = new System.Drawing.Size(180, 22);
             this.menuStrip1OptionsShowHiddenRows.Text = "Show Hidden Rows";
             this.menuStrip1OptionsShowHiddenRows.Click += new System.EventHandler(this.menuStrip1OptionsShowHidenRows_Click);
             // 
             // menuStrip1OptionsResetTableSettings
             // 
             this.menuStrip1OptionsResetTableSettings.Name = "menuStrip1OptionsResetTableSettings";
-            this.menuStrip1OptionsResetTableSettings.Size = new System.Drawing.Size(177, 22);
+            this.menuStrip1OptionsResetTableSettings.Size = new System.Drawing.Size(180, 22);
             this.menuStrip1OptionsResetTableSettings.Text = "Reset Table Settings";
             this.menuStrip1OptionsResetTableSettings.Click += new System.EventHandler(this.menuStrip1OptionsResetTableSettings_Click);
             // 
@@ -619,57 +621,6 @@
             this.dgvSurvey.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dgv_SortCompare);
             this.dgvSurvey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgv_KeyDown);
             // 
-            // cmsRightClick
-            // 
-            this.cmsRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cmsRightClickCopy,
-            this.toolStripSeparator3,
-            this.cmsRightClickHideColumn,
-            this.cmsRightClickFreezeColumn,
-            this.toolStripSeparator4,
-            this.cmsRightClickHideRow});
-            this.cmsRightClick.Name = "cmsRightClick";
-            this.cmsRightClick.Size = new System.Drawing.Size(154, 104);
-            this.cmsRightClick.Opening += new System.ComponentModel.CancelEventHandler(this.cmsRightClick_Opening);
-            // 
-            // cmsRightClickCopy
-            // 
-            this.cmsRightClickCopy.Name = "cmsRightClickCopy";
-            this.cmsRightClickCopy.Size = new System.Drawing.Size(153, 22);
-            this.cmsRightClickCopy.Text = "Copy";
-            this.cmsRightClickCopy.Click += new System.EventHandler(this.cmsRightClickCopy_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(150, 6);
-            // 
-            // cmsRightClickHideColumn
-            // 
-            this.cmsRightClickHideColumn.Name = "cmsRightClickHideColumn";
-            this.cmsRightClickHideColumn.Size = new System.Drawing.Size(153, 22);
-            this.cmsRightClickHideColumn.Text = "Hide Column";
-            this.cmsRightClickHideColumn.Click += new System.EventHandler(this.cmsRightClickHideColumn_Click);
-            // 
-            // cmsRightClickFreezeColumn
-            // 
-            this.cmsRightClickFreezeColumn.Name = "cmsRightClickFreezeColumn";
-            this.cmsRightClickFreezeColumn.Size = new System.Drawing.Size(153, 22);
-            this.cmsRightClickFreezeColumn.Text = "Freeze Column";
-            this.cmsRightClickFreezeColumn.Click += new System.EventHandler(this.cmsRightClickFreezeColumn_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(150, 6);
-            // 
-            // cmsRightClickHideRow
-            // 
-            this.cmsRightClickHideRow.Name = "cmsRightClickHideRow";
-            this.cmsRightClickHideRow.Size = new System.Drawing.Size(153, 22);
-            this.cmsRightClickHideRow.Text = "Hide Row";
-            this.cmsRightClickHideRow.Click += new System.EventHandler(this.cmsRightClickHideRow_Click);
-            // 
             // dgvSurveyColumnGalaxy
             // 
             this.dgvSurveyColumnGalaxy.HeaderText = "Galaxy";
@@ -1013,6 +964,64 @@
             this.dgvSurveyColumnResourceVegetable.Name = "dgvSurveyColumnResourceVegetable";
             this.dgvSurveyColumnResourceVegetable.ReadOnly = true;
             // 
+            // cmsRightClick
+            // 
+            this.cmsRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsRightClickCopy,
+            this.toolStripSeparator3,
+            this.cmsRightClickHideColumn,
+            this.cmsRightClickFreezeColumn,
+            this.toolStripSeparator4,
+            this.cmsRightClickHideRow});
+            this.cmsRightClick.Name = "cmsRightClick";
+            this.cmsRightClick.Size = new System.Drawing.Size(154, 104);
+            this.cmsRightClick.Opening += new System.ComponentModel.CancelEventHandler(this.cmsRightClick_Opening);
+            // 
+            // cmsRightClickCopy
+            // 
+            this.cmsRightClickCopy.Name = "cmsRightClickCopy";
+            this.cmsRightClickCopy.Size = new System.Drawing.Size(153, 22);
+            this.cmsRightClickCopy.Text = "Copy";
+            this.cmsRightClickCopy.Click += new System.EventHandler(this.cmsRightClickCopy_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(150, 6);
+            // 
+            // cmsRightClickHideColumn
+            // 
+            this.cmsRightClickHideColumn.Name = "cmsRightClickHideColumn";
+            this.cmsRightClickHideColumn.Size = new System.Drawing.Size(153, 22);
+            this.cmsRightClickHideColumn.Text = "Hide Column";
+            this.cmsRightClickHideColumn.Click += new System.EventHandler(this.cmsRightClickHideColumn_Click);
+            // 
+            // cmsRightClickFreezeColumn
+            // 
+            this.cmsRightClickFreezeColumn.Name = "cmsRightClickFreezeColumn";
+            this.cmsRightClickFreezeColumn.Size = new System.Drawing.Size(153, 22);
+            this.cmsRightClickFreezeColumn.Text = "Freeze Column";
+            this.cmsRightClickFreezeColumn.Click += new System.EventHandler(this.cmsRightClickFreezeColumn_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(150, 6);
+            // 
+            // cmsRightClickHideRow
+            // 
+            this.cmsRightClickHideRow.Name = "cmsRightClickHideRow";
+            this.cmsRightClickHideRow.Size = new System.Drawing.Size(153, 22);
+            this.cmsRightClickHideRow.Text = "Hide Row";
+            this.cmsRightClickHideRow.Click += new System.EventHandler(this.cmsRightClickHideRow_Click);
+            // 
+            // tESTToolStripMenuItem
+            // 
+            this.tESTToolStripMenuItem.Name = "tESTToolStripMenuItem";
+            this.tESTToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.tESTToolStripMenuItem.Text = "TEST";
+            this.tESTToolStripMenuItem.Click += new System.EventHandler(this.tESTToolStripMenuItem_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1146,6 +1155,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourcePlantFiber;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceSpices;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceVegetable;
+        private System.Windows.Forms.ToolStripMenuItem tESTToolStripMenuItem;
     }
 }
 

@@ -116,7 +116,8 @@ namespace HazeronProspector
         {
             for (int i = 0; i < _resourceZones.Length; i++)
             {
-                _resourceZones[i] = new Zone(i);
+                if (_resourceZones[i] is null)
+                    _resourceZones[i] = new Zone(i);
                 _resourceZones[i].HostCelestialBody = this;
             }
 

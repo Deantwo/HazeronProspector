@@ -57,6 +57,12 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSystemMapConvertor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSystemMapConvertor.Designer.cs">
+      <DependentUpon>FormSystemMapConvertor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Galaxy.cs" />
     <Compile Include="Hazeron.cs" />
     <Compile Include="HazeronStarMapReader.cs" />
@@ -68,6 +74,9 @@
     <Compile Include="Zone.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSystemMapConvertor.resx">
+      <DependentUpon>FormSystemMapConvertor.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

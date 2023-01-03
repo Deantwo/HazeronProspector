@@ -211,7 +211,7 @@ namespace HazeronProspector
 
 
             // Initialize all selected systems that aren't already initialized.
-            _hStarMap.InitializeSystems(selectedSystems.Where(x => !x.Initialized).ToList());
+            _hStarMap?.InitializeSystems(selectedSystems.Where(x => !x.Initialized).ToList());
 
             toolStripProgressBar1.Value = 0;
             toolStripProgressBar1.Step = 1;
@@ -779,5 +779,46 @@ namespace HazeronProspector
                 , "How to use HazeronProspector", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
         }
         #endregion
+
+        private void tESTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new FormSystemMapConvertor();
+            form.ShowDialog(this);
+            if (form.DialogResult != DialogResult.OK)
+                return;
+            HSystem solarSystem = form.ReturnValue;
+            solarSystem.Initialized = true;
+
+            _systems.Add(solarSystem.ID, solarSystem);
+
+            Coordinate SectorCoords = solarSystem.Coord;
+            string sectorName = $"Sector ({SectorCoords.SectorX},{SectorCoords.SectorY},{SectorCoords.SectorZ})";
+            if (!_sectors.ContainsKey(sectorName))
+                _sectors.Add(sectorName, new Sector(sectorName, sectorName, SectorCoords.SectorX.ToString(), SectorCoords.SectorY.ToString(), SectorCoords.SectorZ.ToString()));
+            _sectors[sectorName].AddSystem(solarSystem);
+
+            if (!_galaxies.ContainsKey("Manual"))
+                _galaxies.Add("Manual", new Galaxy("Manual"));
+            _galaxies["Manual"].AddSector(_sectors[sectorName]);
+
+
+
+            cobSelectionGalaxy.Enabled = true;
+            rabSelectionDropdown.Enabled = true;
+            rabSelectionCoordinate.Enabled = true;
+            rabSelection_Click(rabSelectionDropdown, null);
+            rabFilterNone.Enabled = true;
+            rabFilterRange.Enabled = true;
+            rabFilterWormhole.Enabled = true;
+            rabFilter_Click(rabFilterNone, null);
+            cbxOptionsSystemWide.Enabled = true;
+            btnSearch.Enabled = true;
+
+            Galaxy[] galaxies = _galaxies.Values.OrderBy(x => x.Name).ToArray();
+            cobSelectionGalaxy.Items.Clear();
+            cobSelectionGalaxy.Items.AddRange(galaxies);
+            cobSelectionGalaxy.SelectedIndex = 0;
+            toolStripStatusLabel1.Text = "Manual star map updated";
+        }
     }
 }
