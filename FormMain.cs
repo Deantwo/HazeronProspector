@@ -355,6 +355,7 @@ namespace HazeronProspector
                 row.Cells["dgvSurveyColumnGalaxy"].Value = system.HostSector.HostGalaxy;
                 row.Cells["dgvSurveyColumnSector"].Value = system.HostSector;
                 row.Cells["dgvSurveyColumnSystem"].Value = system;
+                row.Cells["dgvSurveyColumnSystemCatalog"].Value = system.CatalogName;
                 row.Cells["dgvSurveyColumnWorld"].Value = system.CelestialBodies.Values.Count(x =>  x.Type != CelestialBodyType.Star && x.Type != CelestialBodyType.Ring) + " worlds (" + system.HabitbleCount() + " habitable)";
                 row.Cells["dgvSurveyColumnOrbit"].Value = system.CelestialBodies.Values.Count(x => x.Type == CelestialBodyType.Star) + " Stars";
                 row.Cells["dgvSurveyColumnCoordinates"].Value = system.Coord;
@@ -374,6 +375,7 @@ namespace HazeronProspector
                         row.Cells["dgvSurveyColumnGalaxy"].Value = system.HostSector.HostGalaxy;
                         row.Cells["dgvSurveyColumnSector"].Value = system.HostSector;
                         row.Cells["dgvSurveyColumnSystem"].Value = system;
+                        row.Cells["dgvSurveyColumnSystemCatalog"].Value = system.CatalogName;
                         row.Cells["dgvSurveyColumnWorld"].Value = planet;
                         row.Cells["dgvSurveyColumnZone"].Value = zone;
                         switch (planet.Orbit)

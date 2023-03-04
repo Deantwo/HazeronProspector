@@ -78,6 +78,7 @@
             this.dgvSurveyColumnGalaxy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnSector = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnSystem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvSurveyColumnSystemCatalog = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnWorld = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnZone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnCoordinates = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -542,6 +543,7 @@
             this.dgvSurveyColumnGalaxy,
             this.dgvSurveyColumnSector,
             this.dgvSurveyColumnSystem,
+            this.dgvSurveyColumnSystemCatalog,
             this.dgvSurveyColumnWorld,
             this.dgvSurveyColumnZone,
             this.dgvSurveyColumnCoordinates,
@@ -688,6 +690,12 @@
             this.dgvSurveyColumnSystem.HeaderText = "System";
             this.dgvSurveyColumnSystem.Name = "dgvSurveyColumnSystem";
             this.dgvSurveyColumnSystem.ReadOnly = true;
+            // 
+            // dgvSurveyColumnSystemCatalog
+            // 
+            this.dgvSurveyColumnSystemCatalog.HeaderText = "Catalog";
+            this.dgvSurveyColumnSystemCatalog.Name = "dgvSurveyColumnSystemCatalog";
+            this.dgvSurveyColumnSystemCatalog.ReadOnly = true;
             // 
             // dgvSurveyColumnWorld
             // 
@@ -1092,6 +1100,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnGalaxy;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnSector;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnSystem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnSystemCatalog;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnWorld;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnZone;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnCoordinates;
