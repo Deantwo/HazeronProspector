@@ -26,6 +26,12 @@ namespace HazeronProspector
             get { return _name; }
         }
 
+        protected string _catalogName;
+        public string CatalogName
+        {
+            get { return _catalogName; }
+        }
+
         protected string _id;
         public string ID
         {
@@ -69,10 +75,11 @@ namespace HazeronProspector
             get { return _wormholeLinks; }
         }
 
-        public HSystem(string id, string name, string x, string y, string z, string eod)
+        public HSystem(string id, string name, string catalog, string x, string y, string z, string eod)
         {
             _id = id;
             _name = name;
+            _catalogName = catalog is null ? name : catalog;
             double nX = Convert.ToDouble(x, System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
             double nY = Convert.ToDouble(y, System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
             double nZ = Convert.ToDouble(z, System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
@@ -120,7 +127,7 @@ namespace HazeronProspector
         public override bool Equals(object obj)
         {
             HSystem system = obj as HSystem;
-            if (system == null)
+            if (system is null)
                 return false;
             return Equals(system);
         }

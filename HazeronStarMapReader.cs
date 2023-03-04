@@ -52,7 +52,7 @@ namespace HazeronProspector
                     XmlNodeList systemNodeList = sectorNode.SelectNodes("system[@eod='Surveyed']");
                     foreach (XmlNode systemNode in systemNodeList)
                     {
-                        HSystem system = new HSystem(systemNode.Attributes["systemId"].Value, systemNode.Attributes["name"].Value, systemNode.Attributes["x"].Value, systemNode.Attributes["y"].Value, systemNode.Attributes["z"].Value, systemNode.Attributes["eod"].Value);
+                        HSystem system = new HSystem(systemNode.Attributes["systemId"].Value, systemNode.Attributes["name"].Value, systemNode.Attributes["catalog"].Value, systemNode.Attributes["x"].Value, systemNode.Attributes["y"].Value, systemNode.Attributes["z"].Value, systemNode.Attributes["eod"].Value);
                         if (system.Surveyed) // This if statement is redundent because of the XPath search.
                         {
                             sector.AddSystem(system);
