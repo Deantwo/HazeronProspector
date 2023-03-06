@@ -15,10 +15,6 @@ namespace HazeronProspector
     {
         HazeronStarMapReader _hStarMap;
 
-        Dictionary<string, Galaxy> _galaxies = new Dictionary<string, Galaxy>();
-        Dictionary<string, HSystem> _systems = new Dictionary<string, HSystem>();
-        Dictionary<string, Sector> _sectors = new Dictionary<string, Sector>();
-
         Coordinate coord;
 
         Dictionary<string, bool> _columnVisability = new Dictionary<string, bool>();
@@ -39,20 +35,8 @@ namespace HazeronProspector
             {
                 _columnVisability.Add(column.Name, true);
             }
-            
-            cobSelectionGalaxy.Enabled = false;
-            rabSelectionDropdown.Enabled = false;
-            cobSelectionSector.Enabled = false;
-            cobSelectionSystem.Enabled = false;
-            rabSelectionCoordinate.Enabled = false;
-            tbxSelectionCoordinate.Enabled = false;
-            rabFilterNone.Enabled = false;
-            rabFilterRange.Enabled = false;
-            nudFilterRange.Enabled = false;
-            rabFilterWormhole.Enabled = false;
-            nudFilterWormhole.Enabled = false;
-            cbxOptionsSystemWide.Enabled = false;
-            btnSearch.Enabled = false;
+
+            ToggleButtons(false);
 
             toolStripProgressBar1.Visible = false;
 
@@ -63,14 +47,49 @@ namespace HazeronProspector
             toolStripStatusLabel1.Text = "No star map";
         }
 
+        /// <summary>
+        /// Toggles between ready and non-ready state of all buttons and options.
+        /// </summary>
+        /// <param name="enable">Setting to true change buttons to ready state. Setting to false change buttons to non-ready state.</param>
+        private void ToggleButtons(bool enable)
+        {
+            btnImportMerger.Enabled = enable;
+            menuStrip1FileImportMerger.Enabled = enable;
+            cobSelectionGalaxy.Enabled = enable;
+            rabSelectionDropdown.Enabled = enable;
+            rabSelectionCoordinate.Enabled = enable;
+            if (enable)
+                rabSelection_Click(rabSelectionDropdown, null);
+            else
+            {
+                cobSelectionSector.Enabled = enable;
+                cobSelectionSystem.Enabled = enable;
+                tbxSelectionCoordinate.Enabled = enable;
+            }
+            rabFilterNone.Enabled = enable;
+            rabFilterRange.Enabled = enable;
+            rabFilterWormhole.Enabled = enable;
+            if (enable)
+                rabFilter_Click(rabFilterNone, null);
+            else
+            {
+                nudFilterRange.Enabled = enable;
+                nudFilterWormhole.Enabled = enable;
+            }
+            cbxOptionsSystemWide.Enabled = enable;
+            btnSearch.Enabled = enable;
+        }
+
         private void StarMapImport()
         {
+            ToggleButtons(false);
+
             if (openFileDialog1.ShowDialog(this) != System.Windows.Forms.DialogResult.OK)
                 return;
-            _hStarMap = new HazeronStarMapReader(openFileDialog1.FileName);
-            _hStarMap.ReadSectorsAndSystems(ref _galaxies, ref _sectors, ref _systems);
+            _hStarMap = new HazeronStarMapReader();
+            _hStarMap.ReadXmlFile(openFileDialog1.FileName);
 
-            if (_galaxies.Count == 0)
+            if (_hStarMap.GalaxyList.Count == 0)
             {
                 MessageBox.Show(this,
                     "The starmap XML export file does not contain any surveyed solar systems.",
@@ -78,22 +97,26 @@ namespace HazeronProspector
                 return;
             }
 
-            cobSelectionGalaxy.Enabled = true;
-            rabSelectionDropdown.Enabled = true;
-            rabSelectionCoordinate.Enabled = true;
-            rabSelection_Click(rabSelectionDropdown, null);
-            rabFilterNone.Enabled = true;
-            rabFilterRange.Enabled = true;
-            rabFilterWormhole.Enabled = true;
-            rabFilter_Click(rabFilterNone, null);
-            cbxOptionsSystemWide.Enabled = true;
-            btnSearch.Enabled = true;
+            ToggleButtons(true);
 
-            Galaxy[] galaxies = _galaxies.Values.OrderBy(x => x.Name).ToArray();
+            Galaxy[] galaxies = _hStarMap.GalaxyList.Values.OrderBy(x => x.Name).ToArray();
             cobSelectionGalaxy.Items.Clear();
             cobSelectionGalaxy.Items.AddRange(galaxies);
             cobSelectionGalaxy.SelectedIndex = 0;
             toolStripStatusLabel1.Text = "Star map loaded";
+        }
+
+        private void StarMapImportMerger()
+        {
+            if (openFileDialog1.ShowDialog(this) != System.Windows.Forms.DialogResult.OK)
+                return;
+            _hStarMap.AppendXmlFile(openFileDialog1.FileName);
+
+            Galaxy[] galaxies = _hStarMap.GalaxyList.Values.OrderBy(x => x.Name).ToArray();
+            cobSelectionGalaxy.Items.Clear();
+            cobSelectionGalaxy.Items.AddRange(galaxies);
+            cobSelectionGalaxy.SelectedIndex = 0;
+            toolStripStatusLabel1.Text = "Additional star map loaded";
         }
 
         private void StarMapSearch()
@@ -137,10 +160,10 @@ namespace HazeronProspector
                         Double.Parse(coordinateArray[0], System.Globalization.NumberStyles.Number, Hazeron.NumberFormat),
                         Double.Parse(coordinateArray[1], System.Globalization.NumberStyles.Number, Hazeron.NumberFormat),
                         Double.Parse(coordinateArray[2], System.Globalization.NumberStyles.Number, Hazeron.NumberFormat));
-                    HSystem system = _systems.Values.SingleOrDefault(x => x.Coord.Equals(coord));
+                    HSystem system = _hStarMap.SystemList.Values.SingleOrDefault(x => x.Coord.Equals(coord));
                     if (system == null)
                     {
-                        IEnumerable<Sector> sectors = _sectors.Values.Where(x => x.Coord.Distance(coord) < 10);
+                        IEnumerable<Sector> sectors = _hStarMap.SectorList.Values.Where(x => x.Coord.Distance(coord) < 10);
                         foreach (Sector sector in sectors)
                             selectedSystems.AddRange(sector.Systems.Values.Where(x => x.Coord.Distance(coord) < 0.5));
                     }
@@ -157,7 +180,7 @@ namespace HazeronProspector
             // Filters for surounding systmes
             if (rabFilterRange.Checked && nudFilterRange.Value > 0) // Range filter
             {
-                foreach (Sector sector in _sectors.Values)
+                foreach (Sector sector in _hStarMap.SectorList.Values)
                 {
                     double dist = coord.Distance(sector.Coord);
                     if (dist <= (double)nudFilterRange.Value + 15)
@@ -209,10 +232,6 @@ namespace HazeronProspector
                 }
             }
 
-
-            // Initialize all selected systems that aren't already initialized.
-            _hStarMap.InitializeSystems(selectedSystems.Where(x => !x.Initialized).ToList());
-
             toolStripProgressBar1.Value = 0;
             toolStripProgressBar1.Step = 1;
             toolStripProgressBar1.Maximum = selectedSystems.Count;
@@ -260,6 +279,11 @@ namespace HazeronProspector
         private void btnImport_Click(object sender, EventArgs e)
         {
             StarMapImport();
+        }
+
+        private void btnImportMerger_Click(object sender, EventArgs e)
+        {
+            StarMapImportMerger();
         }
 
         private void rabSelection_Click(object sender, EventArgs e)
@@ -721,6 +745,11 @@ namespace HazeronProspector
         private void menuStrip1FileImport_Click(object sender, EventArgs e)
         {
             StarMapImport();
+        }
+
+        private void menuStrip1FileImportMerger_Click(object sender, EventArgs e)
+        {
+            StarMapImportMerger();
         }
 
         private void menuStrip1FileExit_Click(object sender, EventArgs e)

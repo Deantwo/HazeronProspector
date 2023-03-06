@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuStrip1File = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1FileImport = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,18 +63,11 @@
             this.lblFilter = new System.Windows.Forms.Label();
             this.lblGalaxySelection = new System.Windows.Forms.Label();
             this.cobSelectionGalaxy = new System.Windows.Forms.ComboBox();
+            this.btnImportMerger = new System.Windows.Forms.Button();
             this.btnImport = new System.Windows.Forms.Button();
             this.lblSelection = new System.Windows.Forms.Label();
             this.nudFilterRange = new System.Windows.Forms.NumericUpDown();
             this.dgvSurvey = new System.Windows.Forms.DataGridView();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.cmsRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cmsRightClickCopy = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.cmsRightClickHideColumn = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsRightClickFreezeColumn = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.cmsRightClickHideRow = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvSurveyColumnGalaxy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnSector = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnSystem = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -133,6 +126,15 @@
             this.dgvSurveyColumnResourcePlantFiber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceSpices = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceVegetable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.cmsRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsRightClickCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.cmsRightClickHideColumn = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsRightClickFreezeColumn = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.cmsRightClickHideRow = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1FileImportMerger = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -161,6 +163,7 @@
             // 
             this.menuStrip1File.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuStrip1FileImport,
+            this.menuStrip1FileImportMerger,
             this.toolStripSeparator1,
             this.menuStrip1FileExit});
             this.menuStrip1File.Name = "menuStrip1File";
@@ -170,20 +173,20 @@
             // menuStrip1FileImport
             // 
             this.menuStrip1FileImport.Name = "menuStrip1FileImport";
-            this.menuStrip1FileImport.Size = new System.Drawing.Size(135, 22);
+            this.menuStrip1FileImport.Size = new System.Drawing.Size(180, 22);
             this.menuStrip1FileImport.Text = "Import";
             this.menuStrip1FileImport.Click += new System.EventHandler(this.menuStrip1FileImport_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(132, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // menuStrip1FileExit
             // 
             this.menuStrip1FileExit.Name = "menuStrip1FileExit";
             this.menuStrip1FileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.menuStrip1FileExit.Size = new System.Drawing.Size(135, 22);
+            this.menuStrip1FileExit.Size = new System.Drawing.Size(180, 22);
             this.menuStrip1FileExit.Text = "Exit";
             this.menuStrip1FileExit.Click += new System.EventHandler(this.menuStrip1FileExit_Click);
             // 
@@ -313,6 +316,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rabSelectionDropdown.AutoCheck = false;
             this.rabSelectionDropdown.AutoSize = true;
+            this.rabSelectionDropdown.Checked = true;
             this.rabSelectionDropdown.Location = new System.Drawing.Point(3, 85);
             this.rabSelectionDropdown.Name = "rabSelectionDropdown";
             this.rabSelectionDropdown.Size = new System.Drawing.Size(74, 17);
@@ -379,6 +383,7 @@
             this.splitContainer1.Panel1.Controls.Add(this.lblFilter);
             this.splitContainer1.Panel1.Controls.Add(this.lblGalaxySelection);
             this.splitContainer1.Panel1.Controls.Add(this.cobSelectionGalaxy);
+            this.splitContainer1.Panel1.Controls.Add(this.btnImportMerger);
             this.splitContainer1.Panel1.Controls.Add(this.btnImport);
             this.splitContainer1.Panel1.Controls.Add(this.lblSelection);
             this.splitContainer1.Panel1.Controls.Add(this.nudFilterRange);
@@ -421,6 +426,7 @@
             // 
             this.rabFilterNone.AutoCheck = false;
             this.rabFilterNone.AutoSize = true;
+            this.rabFilterNone.Checked = true;
             this.rabFilterNone.Location = new System.Drawing.Point(3, 224);
             this.rabFilterNone.Name = "rabFilterNone";
             this.rabFilterNone.Size = new System.Drawing.Size(51, 17);
@@ -502,11 +508,24 @@
             this.cobSelectionGalaxy.TabIndex = 20;
             this.cobSelectionGalaxy.SelectedIndexChanged += new System.EventHandler(this.cobSelectionGalaxy_SelectedIndexChanged);
             // 
+            // btnImportMerger
+            // 
+            this.btnImportMerger.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImportMerger.Location = new System.Drawing.Point(68, 3);
+            this.btnImportMerger.Name = "btnImportMerger";
+            this.btnImportMerger.Size = new System.Drawing.Size(23, 23);
+            this.btnImportMerger.TabIndex = 10;
+            this.btnImportMerger.Text = "+";
+            this.btnImportMerger.UseVisualStyleBackColor = true;
+            this.btnImportMerger.Click += new System.EventHandler(this.btnImportMerger_Click);
+            // 
             // btnImport
             // 
+            this.btnImport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnImport.Location = new System.Drawing.Point(3, 3);
             this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(90, 23);
+            this.btnImport.Size = new System.Drawing.Size(59, 23);
             this.btnImport.TabIndex = 10;
             this.btnImport.Text = "Import";
             this.btnImport.UseVisualStyleBackColor = true;
@@ -598,14 +617,14 @@
             this.dgvSurveyColumnResourcePlantFiber,
             this.dgvSurveyColumnResourceSpices,
             this.dgvSurveyColumnResourceVegetable});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSurvey.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSurvey.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvSurvey.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSurvey.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvSurvey.Location = new System.Drawing.Point(0, 0);
@@ -620,57 +639,6 @@
             this.dgvSurvey.SelectionChanged += new System.EventHandler(this.dgvSurvey_SelectionChanged);
             this.dgvSurvey.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dgv_SortCompare);
             this.dgvSurvey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgv_KeyDown);
-            // 
-            // cmsRightClick
-            // 
-            this.cmsRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cmsRightClickCopy,
-            this.toolStripSeparator3,
-            this.cmsRightClickHideColumn,
-            this.cmsRightClickFreezeColumn,
-            this.toolStripSeparator4,
-            this.cmsRightClickHideRow});
-            this.cmsRightClick.Name = "cmsRightClick";
-            this.cmsRightClick.Size = new System.Drawing.Size(154, 104);
-            this.cmsRightClick.Opening += new System.ComponentModel.CancelEventHandler(this.cmsRightClick_Opening);
-            // 
-            // cmsRightClickCopy
-            // 
-            this.cmsRightClickCopy.Name = "cmsRightClickCopy";
-            this.cmsRightClickCopy.Size = new System.Drawing.Size(153, 22);
-            this.cmsRightClickCopy.Text = "Copy";
-            this.cmsRightClickCopy.Click += new System.EventHandler(this.cmsRightClickCopy_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(150, 6);
-            // 
-            // cmsRightClickHideColumn
-            // 
-            this.cmsRightClickHideColumn.Name = "cmsRightClickHideColumn";
-            this.cmsRightClickHideColumn.Size = new System.Drawing.Size(153, 22);
-            this.cmsRightClickHideColumn.Text = "Hide Column";
-            this.cmsRightClickHideColumn.Click += new System.EventHandler(this.cmsRightClickHideColumn_Click);
-            // 
-            // cmsRightClickFreezeColumn
-            // 
-            this.cmsRightClickFreezeColumn.Name = "cmsRightClickFreezeColumn";
-            this.cmsRightClickFreezeColumn.Size = new System.Drawing.Size(153, 22);
-            this.cmsRightClickFreezeColumn.Text = "Freeze Column";
-            this.cmsRightClickFreezeColumn.Click += new System.EventHandler(this.cmsRightClickFreezeColumn_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(150, 6);
-            // 
-            // cmsRightClickHideRow
-            // 
-            this.cmsRightClickHideRow.Name = "cmsRightClickHideRow";
-            this.cmsRightClickHideRow.Size = new System.Drawing.Size(153, 22);
-            this.cmsRightClickHideRow.Text = "Hide Row";
-            this.cmsRightClickHideRow.Click += new System.EventHandler(this.cmsRightClickHideRow_Click);
             // 
             // dgvSurveyColumnGalaxy
             // 
@@ -1021,6 +989,64 @@
             this.dgvSurveyColumnResourceVegetable.Name = "dgvSurveyColumnResourceVegetable";
             this.dgvSurveyColumnResourceVegetable.ReadOnly = true;
             // 
+            // cmsRightClick
+            // 
+            this.cmsRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsRightClickCopy,
+            this.toolStripSeparator3,
+            this.cmsRightClickHideColumn,
+            this.cmsRightClickFreezeColumn,
+            this.toolStripSeparator4,
+            this.cmsRightClickHideRow});
+            this.cmsRightClick.Name = "cmsRightClick";
+            this.cmsRightClick.Size = new System.Drawing.Size(154, 104);
+            this.cmsRightClick.Opening += new System.ComponentModel.CancelEventHandler(this.cmsRightClick_Opening);
+            // 
+            // cmsRightClickCopy
+            // 
+            this.cmsRightClickCopy.Name = "cmsRightClickCopy";
+            this.cmsRightClickCopy.Size = new System.Drawing.Size(153, 22);
+            this.cmsRightClickCopy.Text = "Copy";
+            this.cmsRightClickCopy.Click += new System.EventHandler(this.cmsRightClickCopy_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(150, 6);
+            // 
+            // cmsRightClickHideColumn
+            // 
+            this.cmsRightClickHideColumn.Name = "cmsRightClickHideColumn";
+            this.cmsRightClickHideColumn.Size = new System.Drawing.Size(153, 22);
+            this.cmsRightClickHideColumn.Text = "Hide Column";
+            this.cmsRightClickHideColumn.Click += new System.EventHandler(this.cmsRightClickHideColumn_Click);
+            // 
+            // cmsRightClickFreezeColumn
+            // 
+            this.cmsRightClickFreezeColumn.Name = "cmsRightClickFreezeColumn";
+            this.cmsRightClickFreezeColumn.Size = new System.Drawing.Size(153, 22);
+            this.cmsRightClickFreezeColumn.Text = "Freeze Column";
+            this.cmsRightClickFreezeColumn.Click += new System.EventHandler(this.cmsRightClickFreezeColumn_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(150, 6);
+            // 
+            // cmsRightClickHideRow
+            // 
+            this.cmsRightClickHideRow.Name = "cmsRightClickHideRow";
+            this.cmsRightClickHideRow.Size = new System.Drawing.Size(153, 22);
+            this.cmsRightClickHideRow.Text = "Hide Row";
+            this.cmsRightClickHideRow.Click += new System.EventHandler(this.cmsRightClickHideRow_Click);
+            // 
+            // menuStrip1FileImportMerger
+            // 
+            this.menuStrip1FileImportMerger.Name = "menuStrip1FileImportMerger";
+            this.menuStrip1FileImportMerger.Size = new System.Drawing.Size(180, 22);
+            this.menuStrip1FileImportMerger.Text = "Import More";
+            this.menuStrip1FileImportMerger.Click += new System.EventHandler(this.menuStrip1FileImportMerger_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1155,6 +1181,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourcePlantFiber;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceSpices;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceVegetable;
+        private System.Windows.Forms.Button btnImportMerger;
+        private System.Windows.Forms.ToolStripMenuItem menuStrip1FileImportMerger;
     }
 }
 

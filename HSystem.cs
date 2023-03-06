@@ -124,16 +124,16 @@ namespace HazeronProspector
             return _name;
         }
 
-        public override bool Equals(object obj)
-        {
-            HSystem system = obj as HSystem;
-            if (system is null)
-                return false;
-            return Equals(system);
-        }
-        public bool Equals(HSystem system)
-        {
-            return _id == system.ID;
-        }
+        //public override bool Equals(object obj)
+        //{
+        //    HSystem system = obj as HSystem;
+        //    if (system is null)
+        //        return false;
+        //    return Equals(system);
+        //}
+        //public bool Equals(HSystem system)
+        //{
+        //    return _id == system.ID;
+        //}
     }
 }
