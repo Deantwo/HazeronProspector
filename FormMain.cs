@@ -45,6 +45,11 @@ namespace HazeronProspector
             //openFileDialog1.InitialDirectory = Application.StartupPath;
 
             toolStripStatusLabel1.Text = "No star map";
+            
+#if DEBUG
+            menuStrip1Debug.Visible = true;
+            menuStrip1DebugSystemOptimizer.Click += menuStrip1DebugSystemOptimizer_Click;
+#endif
         }
 
         /// <summary>
@@ -809,6 +814,20 @@ namespace HazeronProspector
                 "7.  Choose a location for the .xml file that you will be able to find later"
                 , "How to use HazeronProspector", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
         }
+        #endregion
+
+        #region DEGUG
+#if DEBUG
+        private void menuStrip1DebugSystemOptimizer_Click(object sender, EventArgs e)
+        {
+            if (dgvSurvey.SelectedRows.Count != 0)
+            {
+                HSystem system = (HSystem)dgvSurvey.SelectedRows[0].Cells["dgvSurveyColumnSystem"].Value;
+                FormSystemOptimizer window = new FormSystemOptimizer(system);
+                window.Show(this);
+            }
+        }
+#endif
         #endregion
     }
 }
