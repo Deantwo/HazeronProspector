@@ -20,16 +20,22 @@ namespace HazeronProspector
             set { _hostGalaxy = value; }
         }
 
+        protected string _id;
+        public string ID
+        {
+            get { return _id; }
+        }
+
         protected string _name;
         public string Name
         {
             get { return _name; }
         }
 
-        protected string _id;
-        public string ID
+        protected string _catalogName;
+        public string CatalogName
         {
-            get { return _id; }
+            get { return _catalogName; }
         }
 
         protected Coordinate _coord;
@@ -47,6 +53,7 @@ namespace HazeronProspector
         {
             _id = id;
             _name = name;
+            _catalogName = $"Sector ({x}, {y}, {z})";
             int nX = Convert.ToInt32(x, System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
             int nY = Convert.ToInt32(y, System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
             int nZ = Convert.ToInt32(z, System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
@@ -82,16 +89,16 @@ namespace HazeronProspector
             return _name + " (" + _coord.SectorX + ", " + _coord.SectorY + ", " + _coord.SectorZ + ")";
         }
 
-        public override bool Equals(object obj)
-        {
-            Sector sector = obj as Sector;
-            if (sector == null)
-                return false;
-            return Equals(sector);
-        }
-        public bool Equals(Sector sector)
-        {
-            return _id == sector.ID;
-        }
+        //public override bool Equals(object obj)
+        //{
+        //    Sector sector = obj as Sector;
+        //    if (sector == null)
+        //        return false;
+        //    return Equals(sector);
+        //}
+        //public bool Equals(Sector sector)
+        //{
+        //    return _id == sector.ID;
+        //}
     }
 }
