@@ -95,6 +95,8 @@ namespace HazeronProspector
 
         public void AddWormholeLink(HSystem destination)
         {
+            if (destination is null || destination == this)
+                return;
             if (!_wormholeLinks.Contains(destination))
                 _wormholeLinks.Add(destination);
         }
