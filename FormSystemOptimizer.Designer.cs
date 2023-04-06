@@ -45,16 +45,17 @@
             this.dgvResourcesColumnBest = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvSuggentions = new System.Windows.Forms.DataGridView();
+            this.dgvSuggentionsColumnWorld = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvSuggentionsColumnZone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvSuggentionsColumnOrbit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvSuggentionsColumnCity = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dgvSuggentionsColumnHarvest = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.cmsRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.dgvSuggentionsColumnPlanet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvSuggentionsColumnZone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvSuggentionsColumnOrbit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvSuggentionsColumnCity = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dgvSuggentionsColumnHarvest = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSuggestCities = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResources)).BeginInit();
@@ -100,7 +101,7 @@
             // 
             this.tbxGalaxy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbxGalaxy.Location = new System.Drawing.Point(75, 71);
+            this.tbxGalaxy.Location = new System.Drawing.Point(75, 45);
             this.tbxGalaxy.Name = "tbxGalaxy";
             this.tbxGalaxy.ReadOnly = true;
             this.tbxGalaxy.Size = new System.Drawing.Size(134, 20);
@@ -110,7 +111,7 @@
             // 
             this.tbxSector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbxSector.Location = new System.Drawing.Point(75, 45);
+            this.tbxSector.Location = new System.Drawing.Point(75, 71);
             this.tbxSector.Name = "tbxSector";
             this.tbxSector.ReadOnly = true;
             this.tbxSector.Size = new System.Drawing.Size(134, 20);
@@ -138,7 +139,7 @@
             // lblGalaxy
             // 
             this.lblGalaxy.AutoSize = true;
-            this.lblGalaxy.Location = new System.Drawing.Point(6, 74);
+            this.lblGalaxy.Location = new System.Drawing.Point(6, 48);
             this.lblGalaxy.Name = "lblGalaxy";
             this.lblGalaxy.Size = new System.Drawing.Size(39, 13);
             this.lblGalaxy.TabIndex = 1;
@@ -147,7 +148,7 @@
             // lblSector
             // 
             this.lblSector.AutoSize = true;
-            this.lblSector.Location = new System.Drawing.Point(6, 48);
+            this.lblSector.Location = new System.Drawing.Point(6, 74);
             this.lblSector.Name = "lblSector";
             this.lblSector.Size = new System.Drawing.Size(38, 13);
             this.lblSector.TabIndex = 1;
@@ -242,7 +243,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvSuggentions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvSuggentions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgvSuggentionsColumnPlanet,
+            this.dgvSuggentionsColumnWorld,
             this.dgvSuggentionsColumnZone,
             this.dgvSuggentionsColumnOrbit,
             this.dgvSuggentionsColumnCity,
@@ -260,6 +261,43 @@
             this.dgvSuggentions.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dgv_SortCompare);
             this.dgvSuggentions.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgv_KeyDown);
             // 
+            // dgvSuggentionsColumnWorld
+            // 
+            this.dgvSuggentionsColumnWorld.Frozen = true;
+            this.dgvSuggentionsColumnWorld.HeaderText = "World";
+            this.dgvSuggentionsColumnWorld.Name = "dgvSuggentionsColumnWorld";
+            this.dgvSuggentionsColumnWorld.ReadOnly = true;
+            // 
+            // dgvSuggentionsColumnZone
+            // 
+            this.dgvSuggentionsColumnZone.HeaderText = "Zone";
+            this.dgvSuggentionsColumnZone.MinimumWidth = 20;
+            this.dgvSuggentionsColumnZone.Name = "dgvSuggentionsColumnZone";
+            this.dgvSuggentionsColumnZone.ReadOnly = true;
+            this.dgvSuggentionsColumnZone.Width = 20;
+            // 
+            // dgvSuggentionsColumnOrbit
+            // 
+            this.dgvSuggentionsColumnOrbit.HeaderText = "Orbit";
+            this.dgvSuggentionsColumnOrbit.Name = "dgvSuggentionsColumnOrbit";
+            this.dgvSuggentionsColumnOrbit.ReadOnly = true;
+            this.dgvSuggentionsColumnOrbit.Width = 50;
+            // 
+            // dgvSuggentionsColumnCity
+            // 
+            this.dgvSuggentionsColumnCity.HeaderText = "City";
+            this.dgvSuggentionsColumnCity.MinimumWidth = 20;
+            this.dgvSuggentionsColumnCity.Name = "dgvSuggentionsColumnCity";
+            this.dgvSuggentionsColumnCity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dgvSuggentionsColumnCity.Width = 20;
+            // 
+            // dgvSuggentionsColumnHarvest
+            // 
+            this.dgvSuggentionsColumnHarvest.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgvSuggentionsColumnHarvest.HeaderText = "Harvest";
+            this.dgvSuggentionsColumnHarvest.Name = "dgvSuggentionsColumnHarvest";
+            this.dgvSuggentionsColumnHarvest.ReadOnly = true;
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -273,7 +311,7 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(622, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(653, 17);
             this.toolStripStatusLabel1.Spring = true;
             this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -305,6 +343,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnSuggestCities);
             this.splitContainer1.Panel1.Controls.Add(this.comboBox1);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
             // 
@@ -316,42 +355,15 @@
             this.splitContainer1.SplitterDistance = 443;
             this.splitContainer1.TabIndex = 8;
             // 
-            // dgvSuggentionsColumnPlanet
+            // btnSuggestCities
             // 
-            this.dgvSuggentionsColumnPlanet.Frozen = true;
-            this.dgvSuggentionsColumnPlanet.HeaderText = "Planet";
-            this.dgvSuggentionsColumnPlanet.Name = "dgvSuggentionsColumnPlanet";
-            this.dgvSuggentionsColumnPlanet.ReadOnly = true;
-            // 
-            // dgvSuggentionsColumnZone
-            // 
-            this.dgvSuggentionsColumnZone.HeaderText = "Zone";
-            this.dgvSuggentionsColumnZone.MinimumWidth = 20;
-            this.dgvSuggentionsColumnZone.Name = "dgvSuggentionsColumnZone";
-            this.dgvSuggentionsColumnZone.ReadOnly = true;
-            this.dgvSuggentionsColumnZone.Width = 20;
-            // 
-            // dgvSuggentionsColumnOrbit
-            // 
-            this.dgvSuggentionsColumnOrbit.HeaderText = "Orbit";
-            this.dgvSuggentionsColumnOrbit.Name = "dgvSuggentionsColumnOrbit";
-            this.dgvSuggentionsColumnOrbit.ReadOnly = true;
-            this.dgvSuggentionsColumnOrbit.Width = 50;
-            // 
-            // dgvSuggentionsColumnCity
-            // 
-            this.dgvSuggentionsColumnCity.HeaderText = "City";
-            this.dgvSuggentionsColumnCity.MinimumWidth = 20;
-            this.dgvSuggentionsColumnCity.Name = "dgvSuggentionsColumnCity";
-            this.dgvSuggentionsColumnCity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dgvSuggentionsColumnCity.Width = 20;
-            // 
-            // dgvSuggentionsColumnHarvest
-            // 
-            this.dgvSuggentionsColumnHarvest.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dgvSuggentionsColumnHarvest.HeaderText = "Harvest";
-            this.dgvSuggentionsColumnHarvest.Name = "dgvSuggentionsColumnHarvest";
-            this.dgvSuggentionsColumnHarvest.ReadOnly = true;
+            this.btnSuggestCities.Location = new System.Drawing.Point(139, 10);
+            this.btnSuggestCities.Name = "btnSuggestCities";
+            this.btnSuggestCities.Size = new System.Drawing.Size(93, 23);
+            this.btnSuggestCities.TabIndex = 8;
+            this.btnSuggestCities.Text = "Suggest Cities";
+            this.btnSuggestCities.UseVisualStyleBackColor = true;
+            this.btnSuggestCities.Click += new System.EventHandler(this.btnSuggestCities_Click);
             // 
             // FormSystemOptimizer
             // 
@@ -403,10 +415,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvResourcesColumnResource;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvResourcesColumnCurrent;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvResourcesColumnBest;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvSuggentionsColumnPlanet;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvSuggentionsColumnWorld;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSuggentionsColumnZone;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSuggentionsColumnOrbit;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dgvSuggentionsColumnCity;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSuggentionsColumnHarvest;
+        private System.Windows.Forms.Button btnSuggestCities;
     }
 }

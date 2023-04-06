@@ -31,7 +31,7 @@ namespace HazeronProspector
         Frigid
     }
 
-    public class CelestialBody
+    public class CelestialBody : IComparable
     {
         protected HSystem _hostSystem;
         public HSystem HostSystem
@@ -253,5 +253,17 @@ namespace HazeronProspector
         //{
         //    return _id == celestialBody.ID;
         //}
+
+        public int CompareTo(object obj)
+        {
+            CelestialBody w = obj as CelestialBody;
+            if (w is object)
+                return CompareTo(w);
+            return _name.CompareTo(obj);
+        }
+        public int CompareTo(CelestialBody obj)
+        {
+            return _name.CompareTo(obj.Name);
+        }
     }
 }

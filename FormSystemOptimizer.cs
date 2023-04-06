@@ -61,6 +61,40 @@ namespace HazeronProspector
             if (comboBox1.SelectedIndex != -1)
                 UpdateTables();
         }
+
+        private void btnSuggestCities_Click(object sender, EventArgs e)
+        {
+            // Remove all City checkmarks.
+            foreach (DataGridViewRow row in dgvSuggentions.Rows)
+            {
+                bool city = (bool)row.Cells[nameof(dgvSuggentionsColumnCity)].Value;
+                if (city)
+                    row.Cells[nameof(dgvSuggentionsColumnCity)].Value = false;
+            }
+
+            // Mark all worlds with a best resource.
+            Dictionary<ResourceType, Resource> bestResources = _system.BestResources(true);
+            foreach (Resource resource in bestResources.Values)
+            {
+                if (FilterResource(resource.Type))
+                    continue;
+
+                foreach (DataGridViewRow row in dgvSuggentions.Rows)
+                {
+                    bool hasABest;
+                    if (resource.AcrossZones)
+                        hasABest = resource.HostZone.HostCelestialBody.Equals(((Zone)row.Cells[nameof(dgvSuggentionsColumnZone)].Value).HostCelestialBody);
+                    else
+                        hasABest = resource.HostZone.Equals((Zone)row.Cells[nameof(dgvSuggentionsColumnZone)].Value);
+                    if (hasABest)
+                    {
+                        bool city = (bool)row.Cells[nameof(dgvSuggentionsColumnCity)].Value;
+                        if (!city)
+                            row.Cells[nameof(dgvSuggentionsColumnCity)].Value = true;
+                    }
+                }
+            }
+        }
         #endregion
 
         #region DataGridView
@@ -70,44 +104,45 @@ namespace HazeronProspector
             foreach (Resource resource in bestResources.Values)
             {
                 DataGridViewRow row = dgvResources.Rows[dgvResources.Rows.Add()];
-                row.Cells["dgvResourcesColumnResource"].Value = resource.Name;
-                row.Cells["dgvResourcesColumnCurrent"].Value = null;
-                row.Cells["dgvResourcesColumnBest"].Value = resource;
+                row.Cells[nameof(dgvResourcesColumnResource)].Value = resource.Name;
+                row.Cells[nameof(dgvResourcesColumnCurrent)].Value = null;
+                row.Cells[nameof(dgvResourcesColumnBest)].Value = resource;
                 if (resource.HostZone.HostCelestialBody.ResourceZones.Length == 1
                  || (resource.HostZone.HostCelestialBody.ResourceZones.Length > 1
                   && resource.AcrossZones))
-                    row.Cells["dgvResourcesColumnBest"].ToolTipText = resource.HostZone.HostCelestialBody.Name;
+                    row.Cells[nameof(dgvResourcesColumnBest)].ToolTipText = resource.HostZone.HostCelestialBody.Name;
                 else
-                    row.Cells["dgvResourcesColumnBest"].ToolTipText = resource.HostZone.HostCelestialBody.Name + ", " + resource.HostZone.Name;
-                row.Cells["dgvResourcesColumnBest"].Style.ForeColor = resource.TechLevelColor;
+                    row.Cells[nameof(dgvResourcesColumnBest)].ToolTipText = $"{resource.HostZone.HostCelestialBody.Name}, {resource.HostZone.Name}";
+                row.Cells[nameof(dgvResourcesColumnBest)].Style.ForeColor = resource.TechLevelColor;
             }
             dgvResources.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
         }
 
         private void CreateLocationTable(HSystem system)
         {
-            foreach (CelestialBody planet in system.CelestialBodies.Values)
+            foreach (CelestialBody world in system.CelestialBodies.Values)
             {
-                foreach (Zone zone in planet.ResourceZones)
+                foreach (Zone zone in world.ResourceZones)
                 {
                     DataGridViewRow row = dgvSuggentions.Rows[dgvSuggentions.Rows.Add()];
-                    row.Cells["dgvSuggentionsColumnPlanet"].Value = planet;
-                    row.Cells["dgvSuggentionsColumnZone"].Value = zone;
-                    row.Cells["dgvSuggentionsColumnOrbit"].Value = planet.Orbit;
-                    row.Cells["dgvSuggentionsColumnCity"].Value = false;
-                    row.Cells["dgvSuggentionsColumnHarvest"].Value = string.Empty;
+                    row.Cells[nameof(dgvSuggentionsColumnWorld)].Value = world;
+                    row.Cells[nameof(dgvSuggentionsColumnZone)].Value = zone;
+                    row.Cells[nameof(dgvSuggentionsColumnOrbit)].Value = world.Orbit;
+                    row.Cells[nameof(dgvSuggentionsColumnCity)].Value = false;
+                    row.Cells[nameof(dgvSuggentionsColumnHarvest)].Value = string.Empty;
 
                     // Color row.
-                    if (planet.Type == CelestialBodyType.Star
-                     || planet.Type == CelestialBodyType.Ring)
+                    if (world.Type == CelestialBodyType.Star
+                     || world.Type == CelestialBodyType.Ring)
                         row.DefaultCellStyle.BackColor = Color.LightPink;
-                    else if (planet.Type == CelestialBodyType.GasGiant)
+                    else if (world.Type == CelestialBodyType.GasGiant)
                         row.DefaultCellStyle.BackColor = Color.LightBlue;
-                    else if (planet.IsHabitable)
+                    else if (world.IsHabitable)
                         row.DefaultCellStyle.BackColor = Color.LightGreen;
                 }
             }
             dgvSuggentions.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
+            dgvSuggentions.Sort(dgvSuggentionsColumnWorld, ListSortDirection.Ascending);
         }
 
         private void dgvSuggentions_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
@@ -132,12 +167,12 @@ namespace HazeronProspector
             Dictionary<Zone, string> cityHarvest = new Dictionary<Zone, string>();
             foreach (DataGridViewRow row in dgvSuggentions.Rows)
             {
-                bool city = (bool)row.Cells["dgvSuggentionsColumnCity"].Value;
+                bool city = (bool)row.Cells[nameof(dgvSuggentionsColumnCity)].Value;
                 if (city)
                 {
-                    Zone zone = (Zone)row.Cells["dgvSuggentionsColumnZone"].Value;
+                    Zone zone = (Zone)row.Cells[nameof(dgvSuggentionsColumnZone)].Value;
 
-                    cityHarvest.Add(zone, "");
+                    cityHarvest.Add(zone, string.Empty);
 
                     foreach (KeyValuePair<ResourceType, Resource> resourceEntry in zone.Resources)
                     {
@@ -150,7 +185,7 @@ namespace HazeronProspector
                     }
                 }
                 else
-                    row.Cells["dgvSuggentionsColumnHarvest"].Value = "";
+                    row.Cells[nameof(dgvSuggentionsColumnHarvest)].Value = string.Empty;
             }
             if (cityHarvest.Count != 0)
             {
@@ -164,18 +199,18 @@ namespace HazeronProspector
                     Zone zone = resource.HostZone;
 
                     // Ass the resouce to the 
-                    if (!String.IsNullOrEmpty(cityHarvest[zone]))
+                    if (!string.IsNullOrEmpty(cityHarvest[zone]))
                         cityHarvest[zone] += ", ";
                     cityHarvest[zone] += resource.Name;
 
-                    // If the resource is planet-wide, add it to all the zones on the planet.
+                    // If the resource is world-wide, add it to all the zones on the world.
                     if (resourceEntry.Value.AcrossZones && zone.HostCelestialBody.ResourceZones.Length > 1)
                     {
                         foreach (Zone zoneSibling in zone.HostCelestialBody.ResourceZones)
                         {
                             if (zoneSibling != zone && cityHarvest.ContainsKey(zoneSibling))
                             {
-                                if (!String.IsNullOrEmpty(cityHarvest[zoneSibling]))
+                                if (!string.IsNullOrEmpty(cityHarvest[zoneSibling]))
                                     cityHarvest[zoneSibling] += ", ";
                                 cityHarvest[zoneSibling] += resource.Name;
                             }
@@ -184,10 +219,10 @@ namespace HazeronProspector
                 }
                 foreach (DataGridViewRow row in dgvSuggentions.Rows)
                 {
-                    Zone zone = (Zone)row.Cells["dgvSuggentionsColumnZone"].Value;
+                    Zone zone = (Zone)row.Cells[nameof(dgvSuggentionsColumnZone)].Value;
                     if (cityHarvest.ContainsKey(zone))
                     {
-                        DataGridViewCell cell = row.Cells["dgvSuggentionsColumnHarvest"];
+                        DataGridViewCell cell = row.Cells[nameof(dgvSuggentionsColumnHarvest)];
                         cell.Value = cityHarvest[zone];
                     }
                 }
@@ -196,8 +231,8 @@ namespace HazeronProspector
             // Update the reources table.
             foreach (DataGridViewRow row in dgvResources.Rows)
             {
-                ResourceType resourceType = (row.Cells["dgvResourcesColumnBest"].Value as Resource).Type;
-                DataGridViewCell cell = row.Cells["dgvResourcesColumnCurrent"];
+                ResourceType resourceType = (row.Cells[nameof(dgvResourcesColumnBest)].Value as Resource).Type;
+                DataGridViewCell cell = row.Cells[nameof(dgvResourcesColumnCurrent)];
 
                 // Update quality of each resource on the list and add colors.
                 row.DefaultCellStyle.BackColor = Color.White;
@@ -209,10 +244,10 @@ namespace HazeronProspector
                       && Resource.IsAcrossZones(resourceType)))
                         cell.ToolTipText = _resourceBest[resourceType].HostZone.HostCelestialBody.Name;
                     else
-                        cell.ToolTipText = _resourceBest[resourceType].HostZone.HostCelestialBody.Name + ", " + _resourceBest[resourceType].HostZone.Name;
+                        cell.ToolTipText = $"{_resourceBest[resourceType].HostZone.HostCelestialBody.Name}, {_resourceBest[resourceType].HostZone.Name}";
                     cell.Style.ForeColor = _resourceBest[resourceType].TechLevelColor;
                     // Color the row green if the current is best.
-                    if (((Resource)row.Cells["dgvResourcesColumnBest"].Value).Quality == _resourceBest[resourceType].Quality)
+                    if (((Resource)row.Cells[nameof(dgvResourcesColumnBest)].Value).Quality == _resourceBest[resourceType].Quality)
                         row.DefaultCellStyle.BackColor = Color.LightGreen;
                 }
                 else
@@ -230,13 +265,19 @@ namespace HazeronProspector
             DataGridView dgv = (sender as DataGridView);
             string columnName = e.Column.Name;
 
-            if (columnName == "dgvSuggentionsColumnCity")
+            if (columnName == nameof(dgvSuggentionsColumnWorld))
+            {
+                CelestialBody value1 = (CelestialBody)e.CellValue1;
+                CelestialBody value2 = (CelestialBody)e.CellValue2;
+                e.SortResult = value1.CompareTo(value2);
+            }
+            else if (columnName == nameof(dgvSuggentionsColumnCity))
             {
                 bool value1 = (bool)e.CellValue1;
                 bool value2 = (bool)e.CellValue2;
                 e.SortResult = value1.CompareTo(value2);
             }
-            else if (columnName == "dgvSuggentionsColumnHarvest")
+            else if (columnName == nameof(dgvSuggentionsColumnHarvest))
             {
                 int value1 = -1;
                 if ((string)e.CellValue1 != null)
@@ -248,7 +289,7 @@ namespace HazeronProspector
 
                 if (e.SortResult == 0)
                 {
-                    e.SortResult = String.Compare(
+                    e.SortResult = string.Compare(
                         e.CellValue1.ToString(),
                         e.CellValue2.ToString());
                 }
@@ -256,21 +297,21 @@ namespace HazeronProspector
             else
             {
                 // Try to sort based on the cells in the current column as srtings.
-                e.SortResult = String.Compare((e.CellValue1 ?? "").ToString(), (e.CellValue2 ?? "").ToString());
+                e.SortResult = string.Compare((e.CellValue1 ?? string.Empty).ToString(), (e.CellValue2 ?? string.Empty).ToString());
             }
 
             // If the cells are equal, sort based on the ID column.
             if (e.SortResult == 0)
             {
-                e.SortResult = String.Compare(
-                    dgv.Rows[e.RowIndex1].Cells["dgvSuggentionsColumnPlanet"].Value.ToString(),
-                    dgv.Rows[e.RowIndex2].Cells["dgvSuggentionsColumnPlanet"].Value.ToString());
+                e.SortResult = string.Compare(
+                    dgv.Rows[e.RowIndex1].Cells[nameof(dgvSuggentionsColumnWorld)].Value.ToString(),
+                    dgv.Rows[e.RowIndex2].Cells[nameof(dgvSuggentionsColumnWorld)].Value.ToString());
             }
             if (e.SortResult == 0)
             {
-                e.SortResult = String.Compare(
-                    dgv.Rows[e.RowIndex1].Cells["dgvSuggentionsColumnZone"].Value.ToString(),
-                    dgv.Rows[e.RowIndex2].Cells["dgvSuggentionsColumnZone"].Value.ToString());
+                e.SortResult = string.Compare(
+                    dgv.Rows[e.RowIndex1].Cells[nameof(dgvSuggentionsColumnZone)].Value.ToString(),
+                    dgv.Rows[e.RowIndex2].Cells[nameof(dgvSuggentionsColumnZone)].Value.ToString());
             }
             e.Handled = true;
         }
@@ -291,13 +332,13 @@ namespace HazeronProspector
             int maxLen = Math.Max(value1.Length, value2.Length);
             value1 = Normalize(value1, maxLen);
             value2 = Normalize(value2, maxLen);
-            return String.Compare(value1, value2);
+            return string.Compare(value1, value2);
         }
 
         private int CompareNumbers(string value1, string value2)
         {
-            double value1double = Double.Parse(value1, Hazeron.NumberFormat);
-            double value2double = Double.Parse(value2, Hazeron.NumberFormat);
+            double value1double = double.Parse(value1, Hazeron.NumberFormat);
+            double value2double = double.Parse(value2, Hazeron.NumberFormat);
             return Math.Sign(value1double.CompareTo(value2double));
         }
 
@@ -373,10 +414,10 @@ namespace HazeronProspector
             if (currentCell != null)
             {
                 // Check if the cell is empty.
-                if (currentCell.Value != null && currentCell.Value.ToString() != String.Empty)
+                if (currentCell.Value != null && currentCell.Value.ToString() != string.Empty)
                 { // If not empty, add to clipboard and inform the user.
                     Clipboard.SetText(currentCell.Value.ToString());
-                    toolStripStatusLabel1.Text = "Cell content copied to clipboard (\"" + currentCell.Value.ToString() + "\")";
+                    toolStripStatusLabel1.Text = $"Cell content copied to clipboard (\"{currentCell.Value}\")";
                 }
                 else
                 { // Inform the user the cell was empty and therefor no reason to erase the clipboard.
@@ -402,7 +443,7 @@ namespace HazeronProspector
             {
                 // Hide the column.
                 currentCell.OwningColumn.Visible = false;
-                toolStripStatusLabel1.Text = "\"" + currentCell.OwningColumn.HeaderText + "\" column hidden";
+                toolStripStatusLabel1.Text = $"\"{currentCell.OwningColumn.HeaderText}\" column hidden";
             }
         }
 
@@ -417,7 +458,7 @@ namespace HazeronProspector
                 // Hide the selected row(s).
                 foreach (DataGridViewRow row in dgv.SelectedRows)
                     row.Visible = false;
-                toolStripStatusLabel1.Text = dgv.SelectedRows.Count + " row(s) hidden";
+                toolStripStatusLabel1.Text = $"{dgv.SelectedRows.Count} row(s) hidden";
             }
         }
         #endregion
