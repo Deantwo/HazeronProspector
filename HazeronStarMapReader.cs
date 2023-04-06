@@ -155,6 +155,9 @@ namespace HazeronProspector
                     XmlNodeList wormholeNodeList = systemNode.SelectNodes("wormhole");
                     foreach (XmlNode wormholeNode in wormholeNodeList)
                     {
+                        if (wormholeNode.Attributes["polarity"].Value == "neutral") // Ignore intergalactic wormholes.
+                            continue;
+
                         if (wormholeNode.Attributes["destSystemId"] != null)
                         {
                             Coordinate destSystemCoordinates = new Coordinate(double.Parse(wormholeNode.Attributes["destX"].Value, System.Globalization.CultureInfo.InvariantCulture),
