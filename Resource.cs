@@ -44,7 +44,6 @@ namespace HazeronProspector
         Cryozine,
         Hydrogen,
         Ioplasma,
-        NaturalGas,
         Oil,
         Phlogiston,
         Polytaride,
@@ -108,7 +107,6 @@ namespace HazeronProspector
                 case ResourceType.Stone:
                 case ResourceType.Vulcanite:
                     return ResourceCategory.Geosphere;
-                case ResourceType.NaturalGas:
                 case ResourceType.Oil:
                 case ResourceType.Phlogiston:
                 case ResourceType.Polytaride:
@@ -320,9 +318,6 @@ namespace HazeronProspector
                     break;
                 case "Ioplasma":
                     _type = ResourceType.Ioplasma;
-                    break;
-                case "Natural Gas":
-                    _type = ResourceType.NaturalGas;
                     break;
                 case "Oil":
                     _type = ResourceType.Oil;

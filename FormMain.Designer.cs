@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuStrip1File = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1FileImport = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1FileImportMerger = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1FileExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1Options = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,6 +71,14 @@
             this.lblSelection = new System.Windows.Forms.Label();
             this.nudFilterRange = new System.Windows.Forms.NumericUpDown();
             this.dgvSurvey = new System.Windows.Forms.DataGridView();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.cmsRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsRightClickCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.cmsRightClickHideColumn = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsRightClickFreezeColumn = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.cmsRightClickHideRow = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvSurveyColumnGalaxy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnSector = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnSystem = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -98,7 +107,6 @@
             this.dgvSurveyColumnResourceCryozine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceHydrogen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceIoplasma = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvSurveyColumnResourceNaturalGas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceOil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourcePhlogiston = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourcePolytaride = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -128,15 +136,6 @@
             this.dgvSurveyColumnResourcePlantFiber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceSpices = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSurveyColumnResourceVegetable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.cmsRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cmsRightClickCopy = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.cmsRightClickHideColumn = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsRightClickFreezeColumn = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.cmsRightClickHideRow = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1FileImportMerger = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -176,20 +175,27 @@
             // menuStrip1FileImport
             // 
             this.menuStrip1FileImport.Name = "menuStrip1FileImport";
-            this.menuStrip1FileImport.Size = new System.Drawing.Size(180, 22);
+            this.menuStrip1FileImport.Size = new System.Drawing.Size(141, 22);
             this.menuStrip1FileImport.Text = "Import";
             this.menuStrip1FileImport.Click += new System.EventHandler(this.menuStrip1FileImport_Click);
+            // 
+            // menuStrip1FileImportMerger
+            // 
+            this.menuStrip1FileImportMerger.Name = "menuStrip1FileImportMerger";
+            this.menuStrip1FileImportMerger.Size = new System.Drawing.Size(141, 22);
+            this.menuStrip1FileImportMerger.Text = "Import More";
+            this.menuStrip1FileImportMerger.Click += new System.EventHandler(this.menuStrip1FileImportMerger_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(138, 6);
             // 
             // menuStrip1FileExit
             // 
             this.menuStrip1FileExit.Name = "menuStrip1FileExit";
             this.menuStrip1FileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.menuStrip1FileExit.Size = new System.Drawing.Size(180, 22);
+            this.menuStrip1FileExit.Size = new System.Drawing.Size(141, 22);
             this.menuStrip1FileExit.Text = "Exit";
             this.menuStrip1FileExit.Click += new System.EventHandler(this.menuStrip1FileExit_Click);
             // 
@@ -605,7 +611,6 @@
             this.dgvSurveyColumnResourceCryozine,
             this.dgvSurveyColumnResourceHydrogen,
             this.dgvSurveyColumnResourceIoplasma,
-            this.dgvSurveyColumnResourceNaturalGas,
             this.dgvSurveyColumnResourceOil,
             this.dgvSurveyColumnResourcePhlogiston,
             this.dgvSurveyColumnResourcePolytaride,
@@ -635,14 +640,14 @@
             this.dgvSurveyColumnResourcePlantFiber,
             this.dgvSurveyColumnResourceSpices,
             this.dgvSurveyColumnResourceVegetable});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSurvey.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSurvey.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSurvey.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSurvey.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvSurvey.Location = new System.Drawing.Point(0, 0);
@@ -657,6 +662,57 @@
             this.dgvSurvey.SelectionChanged += new System.EventHandler(this.dgvSurvey_SelectionChanged);
             this.dgvSurvey.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dgv_SortCompare);
             this.dgvSurvey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgv_KeyDown);
+            // 
+            // cmsRightClick
+            // 
+            this.cmsRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsRightClickCopy,
+            this.toolStripSeparator3,
+            this.cmsRightClickHideColumn,
+            this.cmsRightClickFreezeColumn,
+            this.toolStripSeparator4,
+            this.cmsRightClickHideRow});
+            this.cmsRightClick.Name = "cmsRightClick";
+            this.cmsRightClick.Size = new System.Drawing.Size(154, 104);
+            this.cmsRightClick.Opening += new System.ComponentModel.CancelEventHandler(this.cmsRightClick_Opening);
+            // 
+            // cmsRightClickCopy
+            // 
+            this.cmsRightClickCopy.Name = "cmsRightClickCopy";
+            this.cmsRightClickCopy.Size = new System.Drawing.Size(153, 22);
+            this.cmsRightClickCopy.Text = "Copy";
+            this.cmsRightClickCopy.Click += new System.EventHandler(this.cmsRightClickCopy_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(150, 6);
+            // 
+            // cmsRightClickHideColumn
+            // 
+            this.cmsRightClickHideColumn.Name = "cmsRightClickHideColumn";
+            this.cmsRightClickHideColumn.Size = new System.Drawing.Size(153, 22);
+            this.cmsRightClickHideColumn.Text = "Hide Column";
+            this.cmsRightClickHideColumn.Click += new System.EventHandler(this.cmsRightClickHideColumn_Click);
+            // 
+            // cmsRightClickFreezeColumn
+            // 
+            this.cmsRightClickFreezeColumn.Name = "cmsRightClickFreezeColumn";
+            this.cmsRightClickFreezeColumn.Size = new System.Drawing.Size(153, 22);
+            this.cmsRightClickFreezeColumn.Text = "Freeze Column";
+            this.cmsRightClickFreezeColumn.Click += new System.EventHandler(this.cmsRightClickFreezeColumn_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(150, 6);
+            // 
+            // cmsRightClickHideRow
+            // 
+            this.cmsRightClickHideRow.Name = "cmsRightClickHideRow";
+            this.cmsRightClickHideRow.Size = new System.Drawing.Size(153, 22);
+            this.cmsRightClickHideRow.Text = "Hide Row";
+            this.cmsRightClickHideRow.Click += new System.EventHandler(this.cmsRightClickHideRow_Click);
             // 
             // dgvSurveyColumnGalaxy
             // 
@@ -826,12 +882,6 @@
             this.dgvSurveyColumnResourceIoplasma.HeaderText = "Ioplasma";
             this.dgvSurveyColumnResourceIoplasma.Name = "dgvSurveyColumnResourceIoplasma";
             this.dgvSurveyColumnResourceIoplasma.ReadOnly = true;
-            // 
-            // dgvSurveyColumnResourceNaturalGas
-            // 
-            this.dgvSurveyColumnResourceNaturalGas.HeaderText = "Natural Gas";
-            this.dgvSurveyColumnResourceNaturalGas.Name = "dgvSurveyColumnResourceNaturalGas";
-            this.dgvSurveyColumnResourceNaturalGas.ReadOnly = true;
             // 
             // dgvSurveyColumnResourceOil
             // 
@@ -1007,64 +1057,6 @@
             this.dgvSurveyColumnResourceVegetable.Name = "dgvSurveyColumnResourceVegetable";
             this.dgvSurveyColumnResourceVegetable.ReadOnly = true;
             // 
-            // cmsRightClick
-            // 
-            this.cmsRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cmsRightClickCopy,
-            this.toolStripSeparator3,
-            this.cmsRightClickHideColumn,
-            this.cmsRightClickFreezeColumn,
-            this.toolStripSeparator4,
-            this.cmsRightClickHideRow});
-            this.cmsRightClick.Name = "cmsRightClick";
-            this.cmsRightClick.Size = new System.Drawing.Size(154, 104);
-            this.cmsRightClick.Opening += new System.ComponentModel.CancelEventHandler(this.cmsRightClick_Opening);
-            // 
-            // cmsRightClickCopy
-            // 
-            this.cmsRightClickCopy.Name = "cmsRightClickCopy";
-            this.cmsRightClickCopy.Size = new System.Drawing.Size(153, 22);
-            this.cmsRightClickCopy.Text = "Copy";
-            this.cmsRightClickCopy.Click += new System.EventHandler(this.cmsRightClickCopy_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(150, 6);
-            // 
-            // cmsRightClickHideColumn
-            // 
-            this.cmsRightClickHideColumn.Name = "cmsRightClickHideColumn";
-            this.cmsRightClickHideColumn.Size = new System.Drawing.Size(153, 22);
-            this.cmsRightClickHideColumn.Text = "Hide Column";
-            this.cmsRightClickHideColumn.Click += new System.EventHandler(this.cmsRightClickHideColumn_Click);
-            // 
-            // cmsRightClickFreezeColumn
-            // 
-            this.cmsRightClickFreezeColumn.Name = "cmsRightClickFreezeColumn";
-            this.cmsRightClickFreezeColumn.Size = new System.Drawing.Size(153, 22);
-            this.cmsRightClickFreezeColumn.Text = "Freeze Column";
-            this.cmsRightClickFreezeColumn.Click += new System.EventHandler(this.cmsRightClickFreezeColumn_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(150, 6);
-            // 
-            // cmsRightClickHideRow
-            // 
-            this.cmsRightClickHideRow.Name = "cmsRightClickHideRow";
-            this.cmsRightClickHideRow.Size = new System.Drawing.Size(153, 22);
-            this.cmsRightClickHideRow.Text = "Hide Row";
-            this.cmsRightClickHideRow.Click += new System.EventHandler(this.cmsRightClickHideRow_Click);
-            // 
-            // menuStrip1FileImportMerger
-            // 
-            this.menuStrip1FileImportMerger.Name = "menuStrip1FileImportMerger";
-            this.menuStrip1FileImportMerger.Size = new System.Drawing.Size(180, 22);
-            this.menuStrip1FileImportMerger.Text = "Import More";
-            this.menuStrip1FileImportMerger.Click += new System.EventHandler(this.menuStrip1FileImportMerger_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1143,6 +1135,8 @@
         private System.Windows.Forms.ToolStripMenuItem menuStrip1OptionsShowHiddenRows;
         private System.Windows.Forms.ToolStripMenuItem menuStrip1Debug;
         private System.Windows.Forms.ToolStripMenuItem menuStrip1DebugSystemOptimizer;
+        private System.Windows.Forms.Button btnImportMerger;
+        private System.Windows.Forms.ToolStripMenuItem menuStrip1FileImportMerger;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnGalaxy;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnSector;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnSystem;
@@ -1171,7 +1165,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceCryozine;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceHydrogen;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceIoplasma;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceNaturalGas;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceOil;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourcePhlogiston;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourcePolytaride;
@@ -1201,8 +1194,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourcePlantFiber;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceSpices;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSurveyColumnResourceVegetable;
-        private System.Windows.Forms.Button btnImportMerger;
-        private System.Windows.Forms.ToolStripMenuItem menuStrip1FileImportMerger;
     }
 }
 
